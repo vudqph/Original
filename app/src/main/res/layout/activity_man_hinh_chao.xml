@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManHinhChao.ManHinhChaoActivity"
-    android:background="@drawable/bg"
-    >
-
-    <Button
-        android:id="@+id/btnStartApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:text="Sử Dụng Ứng Dụng"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#fff0"
-        app:layout_constraintTop_toBottomOf="@+id/imglogoThuCung" />
+    android:background="#FAFAF8"
+    tools:context=".ManHinhChao.ManHinhChaoActivity">
 
     <ImageView
-        android:id="@+id/imglogoThuCung"
-        android:layout_width="237dp"
-        android:layout_height="205dp"
-        android:layout_marginTop="52dp"
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/dog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_pet" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="217dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Sổ Tay Thú Cưng"
+        android:textColor="#08E442"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

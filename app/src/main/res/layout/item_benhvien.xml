@@ -38,7 +38,6 @@
             android:layout_alignParentBottom="true">
 
             <TextView
-                android:id="@+id/tvDiaDiemBV"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:text="Hà Nội"

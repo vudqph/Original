@@ -12,4 +12,6 @@
     <string name="menu_gallery">Dịch Vụ Thú Cưng</string>
     <string name="menu_slideshow">Tin Tức Thú Cưng</string>
     <string name="menu_setting">Cài Đặt</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>

@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerBenhVien"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DichVuThuCung.BenhVienActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <EditText
+            android:layout_marginRight="5dp"
+            android:layout_width="250dp"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp"
+            android:hint="Search"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/custom_edittext"/>
+
+        <Button
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Search"
+            android:background="@drawable/custom_edittext"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recBenhVien"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="110dp" />
+
+    <include
+        layout="@layout/drawer_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu">
+
+    </com.google.android.material.navigation.NavigationView>
 
     <!--    <LinearLayout-->
     <!--        android:layout_width="match_parent"-->
@@ -31,9 +83,6 @@
     <!--            android:layout_weight="1"-->
     <!--            android:text="Tìm Kiếm" />-->
     <!--    </LinearLayout>-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recBenhVien"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
-</RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

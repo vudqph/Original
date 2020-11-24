@@ -16,6 +16,11 @@ public class BenhVienDAO {
         this.sqLiteDB = sqLiteDB;
     }
 
+    public void xoaBenhVien(String id) {
+        SQLiteDatabase sqLiteDatabase = sqLiteDB.getWritableDatabase();
+        sqLiteDatabase.delete("benhVien", "benhVienID=?", new String[]{id});
+    }
+
     public void themBenhVien(BenhVien benhVien) {
         SQLiteDatabase sqLiteDatabase = sqLiteDB.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
