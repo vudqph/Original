@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Tên Bệnh Viện: " />
+
+        <TextView
+            android:id="@+id/tvTTTenBV"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Tên Bệnh Viện" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Tên Bệnh Viện: " />
+
+        <TextView
+            android:id="@+id/tvTTDiaDiemBV"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Tên Bệnh Viện" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Tên Bệnh Viện: " />
+
+        <TextView
+            android:id="@+id/tvTTDichVuBV"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Tên Bệnh Viện" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
