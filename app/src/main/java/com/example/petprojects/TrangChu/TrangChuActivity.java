@@ -76,6 +76,8 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(TrangChuActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(TrangChuActivity.this, CaiDatActivity.class));
+        } else if (item.getItemId() == R.id.exit) {
+            System.exit(1);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

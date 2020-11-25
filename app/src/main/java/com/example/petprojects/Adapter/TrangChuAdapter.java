@@ -1,5 +1,6 @@
 package com.example.petprojects.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.media.Image;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.List;
 public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHolder> {
     private Context context;
     private List<ThuCung> thuCungList;
+    Dialog dialog;
 
     public TrangChuAdapter(Context context, List<ThuCung> thuCungList) {
         this.context = context;
@@ -29,7 +31,16 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHo
     @Override
     public TrangChuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trangchu, parent, false);
-        return new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view);
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.layout_tt_dongvat);
+        viewHolder.imgThuCung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+        return viewHolder;
     }
 
     @Override
