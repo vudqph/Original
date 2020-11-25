@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toolbar;
 
+import com.example.petprojects.DichVuThuCung.BenhVienActivity;
 import com.example.petprojects.R;
 import com.example.petprojects.TrangChu.TrangChuActivity;
 
@@ -29,7 +30,7 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), TrangChuActivity.class));
+                startActivity(new Intent(getApplicationContext(), BenhVienActivity.class));
             }
         }, 3000);
     }

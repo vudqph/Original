@@ -42,7 +42,23 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hospital, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         dialog = new Dialog(context);
+
         dialog.setContentView(R.layout.layout_infor_benhvien);
+        dialog.setTitle("THÔNG TIN BỆNH VIỆN");
+        TextView tvTTTenBV = dialog.findViewById(R.id.tvTTTenBV);
+        TextView tvTTDiaDiemBV = dialog.findViewById(R.id.tvTTDiaDiemBV);
+        TextView tvTTDichVuBV = dialog.findViewById(R.id.tvTTDichVuBV);
+
+        tvTTTenBV.setText("Bệnh Viện ......");
+        tvTTDiaDiemBV.setText("Địa Chỉ Tại");
+        tvTTDichVuBV.setText("Cung Cấp Dịch vụ.....");
+        viewHolder.imgXemThonTinBV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+
+            }
+        });
         return viewHolder;
     }
 
@@ -61,20 +77,6 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         if (benhVien.getDiaChiBenhVien().equalsIgnoreCase("TP. Hồ Chí Minh")) {
             holder.tvDiaDiemBV.setTextColor(Color.MAGENTA);
         }
-        holder.imgXemThonTinBV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder aBuilder = new AlertDialog.Builder(context);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    aBuilder.setView(R.layout.layout_infor_benhvien);
-                }
-                AlertDialog alertDialog = aBuilder.create();
-                alertDialog.getWindow().setLayout(1000, 1000);
-                alertDialog.show();
-                aBuilder.show();
-
-            }
-        });
     }
 
     @Override

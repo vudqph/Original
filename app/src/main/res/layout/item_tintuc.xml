@@ -43,6 +43,7 @@
                 android:layout_height="16dp"
                 android:src="@drawable/icon_share"/>
             <ImageView
+
                 android:src="@drawable/icon_favorite"
                 android:id="@+id/imgIconSave"
                 android:layout_width="16dp"

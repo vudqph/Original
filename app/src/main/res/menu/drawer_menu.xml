@@ -26,4 +26,26 @@
             android:id="@+id/setup"
             android:icon="@drawable/ic_vt_settings"
             android:title="Settings" />
+
+        <item android:title="Kết Nối Với Chúng Tôi">
+                <menu>
+                        <item
+                            android:id="@+id/facebook"
+                            android:icon="@drawable/facebook"
+                            android:title="Facebook" />
+                        <item
+                            android:id="@+id/twitter"
+                            android:icon="@drawable/twitter"
+                            android:title="Twitter" />
+                </menu>
+        </item>
+
+        <item android:title="Khác">
+                <menu>
+                        <item
+                            android:id="@+id/exit"
+                            android:icon="@drawable/ic_baseline_exit_to_app_24"
+                            android:title="Thoát" />
+                </menu>
+        </item>
 </menu>

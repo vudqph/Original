@@ -14,12 +14,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgBenhVien"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/hospital_item" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgBenhVien"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+
+                android:scaleType="centerCrop"
+                android:src="@drawable/hospital_item" />
+
+            <ImageView
+                android:id="@+id/imgRateStar"
+                android:layout_width="80dp"
+                android:layout_height="15dp"
+                android:layout_alignBottom="@id/imgBenhVien"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="1dp"
+                android:src="@drawable/star_rate1" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tvTenBenhVien"

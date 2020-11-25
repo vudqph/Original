@@ -1,16 +1,18 @@
 package com.example.petprojects.ModelThuCung;
 
-class CuaHang {
-    private String idCuaHang, tenCuaHang, dichVuCuaHang, voteCuaHang;
+public class CuaHang {
+    private String idCuaHang, tenCuaHang, dichVuCuaHang, diaChiCuaHang;
+    private int anhCuaHang;
 
     public CuaHang() {
     }
 
-    public CuaHang(String idCuaHang, String tenCuaHang, String dichVuCuaHang, String voteCuaHang) {
+    public CuaHang(String idCuaHang, String tenCuaHang, String dichVuCuaHang, String diaChiCuaHang, int anhCuaHang) {
         this.idCuaHang = idCuaHang;
         this.tenCuaHang = tenCuaHang;
         this.dichVuCuaHang = dichVuCuaHang;
-        this.voteCuaHang = voteCuaHang;
+        this.diaChiCuaHang = diaChiCuaHang;
+        this.anhCuaHang = anhCuaHang;
     }
 
     public String getIdCuaHang() {
@@ -37,11 +39,19 @@ class CuaHang {
         this.dichVuCuaHang = dichVuCuaHang;
     }
 
-    public String getVoteCuaHang() {
-        return voteCuaHang;
+    public String getDiaChiCuaHang() {
+        return diaChiCuaHang;
     }
 
-    public void setVoteCuaHang(String voteCuaHang) {
-        this.voteCuaHang = voteCuaHang;
+    public void setDiaChiCuaHang(String diaChiCuaHang) {
+        this.diaChiCuaHang = diaChiCuaHang;
+    }
+
+    public int getAnhCuaHang() {
+        return anhCuaHang;
+    }
+
+    public void setAnhCuaHang(int anhCuaHang) {
+        this.anhCuaHang = anhCuaHang;
     }
 }

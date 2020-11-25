@@ -6,27 +6,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.petprojects.Adapter.CuaHangAdapter;
 import com.example.petprojects.CaiDat.CaiDatActivity;
+import com.example.petprojects.ModelThuCung.CuaHang;
 import com.example.petprojects.R;
 import com.example.petprojects.TinTucThuCung.TinTucThuCungActivity;
 import com.example.petprojects.TrangChu.TrangChuActivity;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopThuCungActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+    RecyclerView recCuaHangThuCung;
+    CuaHangAdapter cuaHangAdapter;
+    List<CuaHang> cuaHangList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_thu_cung);
+        recCuaHangThuCung = findViewById(R.id.recCuaHangThuCung);
+        cuaHangList = new ArrayList<>();
+        addCuaHang();
+        cuaHangAdapter = new CuaHangAdapter(cuaHangList, this);
+        recCuaHangThuCung.setLayoutManager(new GridLayoutManager(this, 2));
+        recCuaHangThuCung.setAdapter(cuaHangAdapter);
         Menu();
     }
 
@@ -58,5 +74,11 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addCuaHang() {
+        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
+        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
+        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
     }
 }
