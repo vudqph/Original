@@ -96,6 +96,10 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(BenhVienActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(BenhVienActivity.this, CaiDatActivity.class));
+        }else if (item.getItemId() == R.id.facebook) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId() == R.id.twitter) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

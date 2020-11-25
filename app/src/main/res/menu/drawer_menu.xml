@@ -27,7 +27,7 @@
             android:icon="@drawable/ic_vt_settings"
             android:title="Settings" />
 
-        <item android:title="Kết Nối Với Chúng Tôi">
+        <item android:title="CONNECT WITH US">
                 <menu>
                         <item
                             android:id="@+id/facebook"
@@ -45,7 +45,7 @@
                         <item
                             android:id="@+id/exit"
                             android:icon="@drawable/ic_baseline_exit_to_app_24"
-                            android:title="Thoát" />
+                            android:title="Exit" />
                 </menu>
         </item>
 </menu>

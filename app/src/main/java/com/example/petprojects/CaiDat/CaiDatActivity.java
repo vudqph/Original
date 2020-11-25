@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.petprojects.DichVuThuCung.BenhVienActivity;
 import com.example.petprojects.DichVuThuCung.ShopThuCungActivity;
@@ -116,6 +117,10 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(CaiDatActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(CaiDatActivity.this, CaiDatActivity.class));
+        }else if (item.getItemId() == R.id.facebook) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId() == R.id.twitter) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

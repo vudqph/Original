@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.petprojects.Adapter.TrangChuAdapter;
 import com.example.petprojects.CaiDat.CaiDatActivity;
@@ -82,6 +83,10 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(TrangChuActivity.this, CaiDatActivity.class));
         } else if (item.getItemId() == R.id.exit) {
             System.exit(1);
+        } else if (item.getItemId() == R.id.facebook) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId() == R.id.twitter) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -124,17 +129,17 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
 //        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.btn_search_toolbar){
+        if (item.getItemId() == R.id.btn_search_toolbar) {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.add(R.id.frame_layout_frag_search_trangchu,new SearchFragment());
+            transaction.add(R.id.frame_layout_frag_search_trangchu, new SearchFragment());
             transaction.commit();
         }
         return true;

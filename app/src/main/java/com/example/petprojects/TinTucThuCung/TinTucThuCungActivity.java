@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.petprojects.CaiDat.CaiDatActivity;
 import com.example.petprojects.DichVuThuCung.BenhVienActivity;
@@ -109,22 +112,22 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
         @Override
         protected Void doInBackground(Void... voids) {
 
-            try {
-                String url = "https://petshopsaigon.vn/nhom-tin/blog-thu-cung";
-                Document document = Jsoup.connect(url).get();
-                Elements data = document.select("div.noi_dung");
-                for (int i = 0; i < 5; i++) {
-                    String title = data.select("h3").select("a").eq(i).text();
-                    String img = data.select("div.img").select("img").eq(i).attr("src");
-                    if (!img.isEmpty()) {
-                        parseList.add(new Parse(img, title));
-                        Log.d("items", " item: " + img + " Title: " + title);
-                    }
+                try {
+                    String url = "https://petshopsaigon.vn/nhom-tin/blog-thu-cung";
+                    Document document = Jsoup.connect(url).get();
+                    Elements data = document.select("div.noi_dung");
+                    for (int i = 0; i < 5; i++) {
+                        String title = data.select("h3").select("a").eq(i).text();
+                        String img = data.select("div.img").select("img").eq(i).attr("src");
+                        if (!img.isEmpty()) {
+                            parseList.add(new Parse(img, title));
+                            Log.d("items", " item: " + img + " Title: " + title);
+                        }
 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             return null;
         }
     }
@@ -142,9 +145,15 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
             startActivity(new Intent(TinTucThuCungActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(TinTucThuCungActivity.this, CaiDatActivity.class));
+        } else if (item.getItemId() == R.id.facebook) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.twitter) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+private void internetCheck(){
 
+}
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.petprojects.Adapter.CuaHangAdapter;
 import com.example.petprojects.CaiDat.CaiDatActivity;
@@ -71,6 +72,10 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
             startActivity(new Intent(ShopThuCungActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(ShopThuCungActivity.this, CaiDatActivity.class));
+        }else if (item.getItemId() == R.id.facebook) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId() == R.id.twitter) {
+            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
