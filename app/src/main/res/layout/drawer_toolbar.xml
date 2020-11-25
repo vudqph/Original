@@ -6,7 +6,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#fff0"
+        android:background="#f6b5b9"
         android:id="@+id/tool_bar"/>
 
 </LinearLayout>
