@@ -23,6 +23,7 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_chao);
         getSupportActionBar().setTitle("Sổ Tay Thú Cưng");
+        getSupportActionBar().hide();
         WaitScreen();
     }
 
