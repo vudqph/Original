@@ -6,7 +6,7 @@
     android:background="@drawable/background_trangchu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CaiDat.CaiDatActivity">
+    tools:context=".setting.CaiDatActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

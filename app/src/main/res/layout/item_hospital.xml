@@ -34,7 +34,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="1dp"
-                android:src="@drawable/star_rate1" />
+                />
         </RelativeLayout>
 
         <TextView
@@ -63,7 +63,7 @@
                 android:textSize="12dp" />
 
             <ImageView
-                android:id="@+id/imgChiDuongMap"
+                android:id="@+id/imgChiDuongMapp"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginLeft="20dp"

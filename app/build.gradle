@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.example.petprojects"
+        applicationId "vn.poly.sotaythucung"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -37,6 +37,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     // -----------------------------
     // -----------------------------
     testImplementation 'junit:junit:4.12'
