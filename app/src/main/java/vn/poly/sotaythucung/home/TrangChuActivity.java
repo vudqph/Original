@@ -39,6 +39,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     RecyclerView recTrangChu;
     List<ThuCung> thuCungList;
     TrangChuAdapter trangChuAdapter;
+    SearchFragment searchFragment = new SearchFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,11 +141,17 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.btn_search_toolbar) {
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction transaction = fm.beginTransaction();
-            transaction.add(R.id.frame_layout_frag_search_trangchu, new SearchFragment());
+        boolean temp = true;
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        if (item.getItemId() == R.id.btn_search_toolbar && temp==true) {
+            transaction.add(R.id.frame_layout_frag_search_trangchu, searchFragment);
             transaction.commit();
+            temp=false;
+        }else if (item.getItemId() == R.id.btn_search_toolbar && temp==false){
+            transaction.remove(searchFragment);
+            transaction.commit();
+            temp=true;
         }
         return true;
     }
