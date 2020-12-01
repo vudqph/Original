@@ -54,7 +54,7 @@ public class NewsMainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Document document) {
             super.onPostExecute(document);
-            Picasso.get().load(imagesHeader).into(imgHeaderNews);
+            Picasso.get().load(image).into(imgHeaderNews);
             webviewNews.loadDataWithBaseURL(url, document.toString(), "text/html", "utf-8", "");
             webviewNews.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
             webviewNews.setWebViewClient(new WebViewClient() {
