@@ -1,20 +1,23 @@
 <resources>
-    <string name="app_name">PetProjects</string>
-    <string name="title_activity_trang_chu">TrangChuActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Sổ Tay Thú Cưng</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">PetProjects</string>
+    <string name="title_activity_trang_chu" translatable="false">TrangChuActivity</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Sổ Tay Thú Cưng</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
-    <string name="menu_home">Trang Chủ</string>
-    <string name="menu_gallery">Dịch Vụ Thú Cưng</string>
-    <string name="menu_slideshow">Tin Tức Thú Cưng</string>
-    <string name="menu_setting">Cài Đặt</string>
-    <string name="open">open</string>
-    <string name="close">close</string>
+    <string name="menu_home" translatable="false">Trang Chủ</string>
+    <string name="menu_gallery" translatable="false">Dịch Vụ Thú Cưng</string>
+    <string name="menu_slideshow" translatable="false">Tin Tức Thú Cưng</string>
+    <string name="menu_setting" translatable="false">Cài Đặt</string>
+    <string name="open" translatable="false">open</string>
+    <string name="close" translatable="false">close</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_maps_benh_vien">Map</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title_activity_maps_benh_vien" translatable="false">Map</string>
+    <!-- Mutiple Language -->
+
+
 </resources>

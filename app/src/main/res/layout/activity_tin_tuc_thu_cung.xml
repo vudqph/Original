@@ -9,14 +9,19 @@
     tools:context=".petsnews.TinTucThuCungActivity">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recTinTuc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="10dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recTinTuc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -25,6 +30,12 @@
             android:indeterminate="true"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/checkInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
 
     <include

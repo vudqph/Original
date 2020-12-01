@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BenhVienDAO {
-    private vn.poly.sotaythucung.sqlite.SQLiteDB sqLiteDB;
+    private SQLiteDB sqLiteDB;
 
     public BenhVienDAO(SQLiteDB sqLiteDB) {
         this.sqLiteDB = sqLiteDB;

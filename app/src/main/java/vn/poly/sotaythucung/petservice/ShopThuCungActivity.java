@@ -7,9 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -17,11 +19,13 @@ import android.widget.Toast;
 
 import vn.poly.sotaythucung.adapter.CuaHangAdapter;
 import vn.poly.sotaythucung.setting.CaiDatActivity;
+import vn.poly.sotaythucung.umtility.OpenSocial;
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
 import vn.poly.sotaythucung.model.CuaHang;
 import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.petsnews.TinTucThuCungActivity;
 import vn.poly.sotaythucung.home.TrangChuActivity;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -44,7 +48,7 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         cuaHangList = new ArrayList<>();
         addCuaHang();
         cuaHangAdapter = new CuaHangAdapter(cuaHangList, this);
-        recCuaHangThuCung.setLayoutManager(new GridLayoutManager(this, 2));
+        recCuaHangThuCung.setLayoutManager(new LinearLayoutManager(this));
         recCuaHangThuCung.setAdapter(cuaHangAdapter);
         Menu();
     }
@@ -74,10 +78,14 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
             startActivity(new Intent(ShopThuCungActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(ShopThuCungActivity.this, CaiDatActivity.class));
-        }else if (item.getItemId() == R.id.facebook) {
+        } else if (item.getItemId() == R.id.facebook) {
+
             Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.twitter) {
-            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+//            Intent browerIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://facebook.com/quangvucot"));
+//            startActivity(browerIntent);
+//            OpenSocial openSocial = new OpenSocial();
+//            openSocial.getFacebookPageURL(this);
         } else if (item.getItemId() == R.id.exit) {
             ThoatManHinh thoatManHinh = new ThoatManHinh();
             thoatManHinh.Exit(ShopThuCungActivity.this);
@@ -87,8 +95,8 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
     }
 
     public void addCuaHang() {
-        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
-        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
-        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store));
+        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store,21.03384013819058, 105.81026261195504));
+        cuaHangList.add(new CuaHang("CH02", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store,21.03384013819058, 105.81026261195504));
+
     }
 }

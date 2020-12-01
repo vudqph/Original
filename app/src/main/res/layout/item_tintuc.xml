@@ -24,11 +24,12 @@
         <TextView
             android:layout_marginTop="10dp"
             android:id="@+id/tvTinTuc"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:text="Đây là test"
             android:textSize="12dp" />

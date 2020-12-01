@@ -27,17 +27,17 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
     @NonNull
     @Override
     public CuaHangAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_store, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CuaHangAdapter.ViewHolder holder, int position) {
-        CuaHang cuaHang = cuaHangList.get(position);
-        holder.tvTenCuaHang.setText(cuaHang.getTenCuaHang());
-        holder.tvDiaChiCuaHang.setText(cuaHang.getDiaChiCuaHang());
-        holder.imgCuaHang.setImageResource(cuaHang.getAnhCuaHang());
+//        CuaHang cuaHang = cuaHangList.get(position);
+//        holder.tvTenCuaHang.setText(cuaHang.getTenCuaHang());
+//        holder.tvDiaChiCuaHang.setText(cuaHang.getDiaChiCuaHang());
+//        holder.imgCuaHang.setImageResource(cuaHang.getAnhCuaHang());
     }
 
     @Override
@@ -51,9 +51,9 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTenCuaHang = itemView.findViewById(R.id.tvTenCuahang);
-            tvDiaChiCuaHang = itemView.findViewById(R.id.tvDiaChiCuaHang);
-            imgCuaHang = itemView.findViewById(R.id.imgCuaHang);
+//            tvTenCuaHang = itemView.findViewById(R.id.tvTenCuahang);
+//            tvDiaChiCuaHang = itemView.findViewById(R.id.tvDiaChiCuaHang);
+//            imgCuaHang = itemView.findViewById(R.id.imgCuaHang);
         }
     }
 }

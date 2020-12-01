@@ -68,12 +68,21 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
 
     private void DiaLogSingleChoiseScreen() {
         listItem = new String[]{"Tối", "Sáng"};
-        AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
+        int checkItem = 0;
+        final AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
         aBuilder.setTitle("Chọn Chế Độ");
-        aBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
+        aBuilder.setSingleChoiceItems(listItem, checkItem, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+            public void onClick(final DialogInterface dialogInterface, final int i) {
+                switch (i) {
+                    case 0:
+                        Toast.makeText(CaiDatActivity.this, "Item 0 clicked ", Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                        break;
+                    case 1:
+                        Toast.makeText(CaiDatActivity.this, "Item 1 clicked ", Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
         aBuilder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {

@@ -8,12 +8,15 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import vn.poly.sotaythucung.petservice.BenhVienActivity;
 import vn.poly.sotaythucung.petservice.MapsBenhVienActivity;
 import vn.poly.sotaythucung.model.BenhVien;
 import vn.poly.sotaythucung.R;
@@ -26,65 +29,65 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
     private Context context;
     private List<BenhVien> benhVienList;
     Dialog dialog;
-    SQLiteDB sqLiteDB;
 
-    public BenhVienAdapter(Context context) {
+    public BenhVienAdapter(Context context, List<BenhVien> benhVienList) {
         this.context = context;
+        this.benhVienList = benhVienList;
     }
 
-    public void setData(List<BenhVien> benhVienList) {
-        this.benhVienList = benhVienList;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hospital, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
-        dialog = new Dialog(context);
 
-        dialog.setContentView(R.layout.layout_infor_benhvien);
-        dialog.setTitle("THÔNG TIN BỆNH VIỆN");
-        TextView tvTTTenBV = dialog.findViewById(R.id.tvTTTenBV);
-        TextView tvTTDiaDiemBV = dialog.findViewById(R.id.tvTTDiaDiemBV);
-        TextView tvTTDichVuBV = dialog.findViewById(R.id.tvTTDichVuBV);
-
-        tvTTTenBV.setText("Bệnh Viện ......");
-        tvTTDiaDiemBV.setText("Địa Chỉ Tại");
-        tvTTDichVuBV.setText("Cung Cấp Dịch vụ.....");
-        viewHolder.imgXemThonTinBV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-
-            }
-        });
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        final BenhVien benhVien = benhVienList.get(position);
+        final BenhVienDAO benhVienDAO = new BenhVienDAO(new SQLiteDB(context));
+        BenhVien benhVien = benhVienList.get(position);
         if (benhVien == null) {
             return;
         }
+        dialog = new Dialog(context);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View view = inflater.inflate(R.layout.layout_infor_benhvien, null);
+
+        final TextView tvTTTenBV = view.findViewById(R.id.tvTTTenBV);
+        final TextView tvTTDiaDiemBV = view.findViewById(R.id.tvTTDiaDiemBV);
+        Button btnThoatTT = view.findViewById(R.id.btnThoatTT);
+        TextView tvTTDichVuBV = view.findViewById(R.id.tvTTDichVuBV);
+
+        holder.imgXemThonTinBV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<BenhVien> benhVienList2 = benhVienDAO.getAllBenhVien();
+                tvTTTenBV.setText(benhVienList2.get(position).getTenBenhVien());
+                tvTTDiaDiemBV.setText(benhVienList2.get(position).getDiaChiBenhVien());
+
+                dialog.setContentView(view);
+                dialog.show();
+            }
+        });
+        btnThoatTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         holder.imgBenhVien.setImageResource(benhVien.getResouceImages());
         holder.tvTenBenhVien.setText(benhVien.getTenBenhVien());
         holder.tvDiaDiemBV.setText(benhVien.getDiaChiBenhVien());
-        if (benhVien.getDiaChiBenhVien().equalsIgnoreCase("Hà Nội")) {
-            holder.tvDiaDiemBV.setTextColor(Color.RED);
-        }
-        if (benhVien.getDiaChiBenhVien().equalsIgnoreCase("TP. Hồ Chí Minh")) {
-            holder.tvDiaDiemBV.setTextColor(Color.MAGENTA);
-        }
-        sqLiteDB = new SQLiteDB(context);
-        final BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
+        holder.tvDiaDiemBV.setTextColor(Color.RED);
+
+
         holder.imgMapBenhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 benhVienList = benhVienDAO.getMap();
                 Intent intent = new Intent(context, MapsBenhVienActivity.class);
                 intent.putExtra("KINHDO", benhVienList.get(position).getKinhDo());
@@ -93,9 +96,10 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
 
             }
         });
-        List<BenhVien> benhVienList1 = benhVienDAO.getMap();
+        final List<BenhVien> benhVienList1 = benhVienDAO.getMap();
         if (benhVienList1.get(position).getDanhGiaBenhVien() == 0) {
             holder.imgRateStar.setImageResource(R.drawable.star_rate5);
+
         } else if (benhVienList1.get(position).getDanhGiaBenhVien() == 1) {
             holder.imgRateStar.setImageResource(R.drawable.star_rate4);
         } else if (benhVienList1.get(position).getDanhGiaBenhVien() == 2) {
@@ -106,9 +110,10 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
             holder.imgRateStar.setImageResource(R.drawable.star_rate1);
         } else if (benhVienList1.get(position).getDanhGiaBenhVien() == 5) {
             holder.imgRateStar.setImageResource(R.drawable.star_rate6);
-        }else{
+        } else {
         }
     }
+
 
     @Override
     public int getItemCount() {

@@ -10,10 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import vn.poly.sotaythucung.setting.CaiDatActivity;
+import vn.poly.sotaythucung.umtility.OpenSocial;
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
 import vn.poly.sotaythucung.model.BenhVien;
 
@@ -23,6 +27,7 @@ import vn.poly.sotaythucung.sqlite.BenhVienDAO;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 import vn.poly.sotaythucung.petsnews.TinTucThuCungActivity;
 import vn.poly.sotaythucung.home.TrangChuActivity;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -36,6 +41,7 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+    List<BenhVien> benhVienList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +53,9 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
 //        delete();
         Menu();
         ThemBenhVien();
-        benhVienAdapter = new BenhVienAdapter(this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        recBenhVien.setLayoutManager(gridLayoutManager);
-        List<BenhVien> benhVienList = benhVienDAO.getAllBenhVien();
-        benhVienAdapter.setData(benhVienList);
+        recBenhVien.setLayoutManager(new GridLayoutManager(this, 2));
+        benhVienList = benhVienDAO.getAllBenhVien();
+        benhVienAdapter = new BenhVienAdapter(this, benhVienList);
         recBenhVien.setAdapter(benhVienAdapter);
     }
 
@@ -95,7 +99,8 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(BenhVienActivity.this, CaiDatActivity.class));
         } else if (item.getItemId() == R.id.facebook) {
-            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+//            Uri uri = Uri.parse("https://www.facebook.com/quangvucot");
+//            startActivity(new Intent(Intent.ACTION_VIEW,uri));
         } else if (item.getItemId() == R.id.twitter) {
             Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.exit) {
@@ -107,21 +112,16 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void ThemBenhVien() {
-        BenhVien benhVien = new BenhVien("BV01", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item,4, 21.053551700845947, 105.78829908194113);
-       BenhVien benhVien2 = new BenhVien("BV02", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item,4, 21.043329253900307,  105.7854727845158);
-        BenhVien benhVien3 = new BenhVien("BV03", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item,1, 21.053551700845947, 105.78829908194113);
-
-//        BenhVien benhVien4 = new BenhVien("BV04", "Bệnh Viện Nam Từ Liêm", "Hà Nội", R.drawable.hospital_item);
-//        BenhVien benhVien5 = new BenhVien("BV05", "Bệnh Viện Ba Lan", "TP. Hồ Chí Minh", R.drawable.hospital_item);
-//        BenhVien benhVien6 = new BenhVien("BV06", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item);
-//        BenhVien benhVien7 = new BenhVien("BV07", "Bệnh Viện Nam Từ Liêm", "TP. Hồ Chí Minh", R.drawable.hospital_item);
-
+        BenhVien benhVien = new BenhVien("BV01", "Phòng khám thú y Mỹ Đình", "Mỹ Đình, Nam Từ Liêm, Hà Nội", R.drawable.hospital_item, 4, 21.040240209042555, 105.7667198273969);
+        BenhVien benhVien2 = new BenhVien("BV02", "Bệnh Viện Thú Y PetHealth", "Hà Nội", R.drawable.hospital_item, 3, 21.0152059, 105.8232361);
+        BenhVien benhVien3 = new BenhVien("BV03", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item, 1, 21.053551700845947, 105.78829908194113);
+        BenhVien benhVien4 = new BenhVien("BV04", "Bệnh Viện Xmmm", "Nghệ An", R.drawable.hospital_item, 1, 21.053551700845947, 105.78829908194113);
 
         BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
         benhVienDAO.themBenhVien(benhVien);
         benhVienDAO.themBenhVien(benhVien2);
         benhVienDAO.themBenhVien(benhVien3);
-//        benhVienDAO.themBenhVien(benhVien4);
+        benhVienDAO.themBenhVien(benhVien4);
 //        benhVienDAO.themBenhVien(benhVien5);
 //        benhVienDAO.themBenhVien(benhVien6);
 //        benhVienDAO.themBenhVien(benhVien7);
@@ -129,7 +129,7 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void delete() {
-        String benhVien[] = new String[]{"BV07"};
+        String benhVien[] = new String[]{"BV01", "BV02", "BV03"};
         BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
         for (int i = 0; i < benhVien.length; i++) {
             benhVienDAO.xoaBenhVien(benhVien[i]);

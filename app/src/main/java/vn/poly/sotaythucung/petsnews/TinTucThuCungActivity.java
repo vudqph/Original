@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -15,19 +16,25 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import vn.poly.sotaythucung.model.TinTuc;
 import vn.poly.sotaythucung.setting.CaiDatActivity;
+import vn.poly.sotaythucung.sqlite.BenhVienDAO;
+import vn.poly.sotaythucung.sqlite.SQLiteDB;
+import vn.poly.sotaythucung.sqlite.TinTucDAO;
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
 import vn.poly.sotaythucung.petservice.BenhVienActivity;
 import vn.poly.sotaythucung.petservice.ShopThuCungActivity;
-import vn.poly.sotaythucung.model.Parse;
 import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.home.TrangChuActivity;
+
 import com.google.android.material.navigation.NavigationView;
 
 import org.jsoup.Jsoup;
@@ -40,37 +47,41 @@ import java.util.List;
 
 public class TinTucThuCungActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView recyclerViewTinTuc;
-    ParseAdapter parseAdapter;
-    List<Parse> parseList;
+    TinTucAdapter tinTucAdapter;
+    List<TinTuc> tinTucList;
     ProgressBar progressBar;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+    TextView checkInternet;
+    private SQLiteDB sqLiteDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tin_tuc_thu_cung);
+        sqLiteDB = new SQLiteDB(this);
+        TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
         recyclerViewTinTuc = findViewById(R.id.recTinTuc);
+        checkInternet = findViewById(R.id.checkInternet);
         Menu();
-
         progressBar = findViewById(R.id.progressBar);
-        parseList = new ArrayList<>();
+        tinTucList = new ArrayList<>();
         recyclerViewTinTuc.setHasFixedSize(true);
         recyclerViewTinTuc.setLayoutManager(new GridLayoutManager(this, 2));
-        parseAdapter = new ParseAdapter(parseList, this);
-        recyclerViewTinTuc.setAdapter(parseAdapter);
         Content content = new Content();
         content.execute();
-
+//        delete();
+        tinTucList = tinTucDAO.getAllNews();
+        tinTucAdapter = new TinTucAdapter(tinTucList, this);
+        recyclerViewTinTuc.setAdapter(tinTucAdapter);
     }
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("Tin Tức Thú Cưng");
         setSupportActionBar(toolbar);
-
         drawerLayout = findViewById(R.id.drawerTinTuc);
         navigationView = findViewById(R.id.navigation_view);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
@@ -87,16 +98,13 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(TinTucThuCungActivity.this, android.R.anim.fade_in));
-
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(TinTucThuCungActivity.this, android.R.anim.fade_out));
-            parseAdapter.notifyDataSetChanged();
+            tinTucAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -110,26 +118,38 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
             if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                     connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
                 try {
-                    String url = "https://petshopsaigon.vn/nhom-tin/blog-thu-cung";
+                    String url = "https://sotaythucung.blogspot.com/search/label/Th%C3%BA%20c%C6%B0ng";
                     Document document = Jsoup.connect(url).get();
-                    Elements data = document.select("div.noi_dung");
-                    for (int i = 0; i < 5; i++) {
-                        String title = data.select("h3").select("a").eq(i).text();
-                        String img = data.select("div.img").select("img").eq(i).attr("src");
+                    Elements data = document.select("div.item-content");
+                    for (int i = 0; i < data.size(); i++) {
+                        String idNews = "new0" + i;
+                        String img = data.select("div.item-thumbnail").select("img").eq(i).attr("src");
+                        String title = data.select("div.item-title").select("a").eq(i).text();
+                        String urlPage = data.select("div.item-title").select("a").eq(i).attr("href");
+                        Log.d("items", " item: " + img + " Title: " + title + "urlPage: " + urlPage);
                         if (!img.isEmpty()) {
-                            parseList.add(new Parse(img, title));
-                            Log.d("items", " item: " + img + " Title: " + title);
+                            TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
+                            tinTucDAO.addNews(new TinTuc(title, "news0" + i, img, urlPage));
+                            Log.d("items", " item: " + img + " Title: " + idNews + "urlPage: " + urlPage);
                         }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
+                checkInternet.setText("Không có kết nối Internet");
             }
             return null;
         }
     }
 
+    private void delete() {
+        String benhVien[] = new String[]{"news01", "news00"};
+        TinTucDAO benhVienDAO = new TinTucDAO(sqLiteDB);
+        for (int i = 0; i < benhVien.length; i++) {
+            benhVienDAO.deleteNews(benhVien[i]);
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -155,8 +175,22 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
         return true;
     }
 
-    private void internetCheck() {
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.refresh_activity, menu);
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh_page:
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
