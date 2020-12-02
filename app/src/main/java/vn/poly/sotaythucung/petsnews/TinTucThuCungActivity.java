@@ -121,17 +121,19 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
                     String url = "https://sotaythucung.blogspot.com/search/label/Th%C3%BA%20c%C6%B0ng";
                     Document document = Jsoup.connect(url).get();
                     Elements data = document.select("div.item-content");
+                    TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
+                    tinTucList = tinTucDAO.getAllNews();
                     for (int i = 0; i < data.size(); i++) {
                         String idNews = "new0" + i;
                         String img = data.select("div.item-thumbnail").select("img").eq(i).attr("src");
                         String title = data.select("div.item-title").select("a").eq(i).text();
                         String urlPage = data.select("div.item-title").select("a").eq(i).attr("href");
                         Log.d("items", " item: " + img + " Title: " + title + "urlPage: " + urlPage);
-                        if (!img.isEmpty()) {
-                            TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
-                            tinTucDAO.addNews(new TinTuc(title, "news0" + i, img, urlPage));
-                            Log.d("items", " item: " + img + " Title: " + idNews + "urlPage: " + urlPage);
-                        }
+                            if (!img.isEmpty()) {
+                                tinTucDAO.addNews(new TinTuc(title, "news0" + i, img, urlPage));
+                                Log.d("items", " item: " + img + " Title: " + idNews + "urlPage: " + urlPage);
+                            }
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -144,7 +146,7 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
     }
 
     private void delete() {
-        String benhVien[] = new String[]{"news01", "news00"};
+        String benhVien[] = new String[]{"news01", "news00", "news02", "news03", "news04", "news05"};
         TinTucDAO benhVienDAO = new TinTucDAO(sqLiteDB);
         for (int i = 0; i < benhVien.length; i++) {
             benhVienDAO.deleteNews(benhVien[i]);

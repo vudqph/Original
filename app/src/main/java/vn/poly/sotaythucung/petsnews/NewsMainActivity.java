@@ -49,7 +49,6 @@ public class NewsMainActivity extends AppCompatActivity {
     public class Content extends AsyncTask<Void, Void, Document> {
         Intent intent = getIntent();
         String url = intent.getStringExtra("LINKBLOG");
-        String imagesHeader = intent.getStringExtra("IMAGERHEADER");
 
         @Override
         protected void onPostExecute(Document document) {
