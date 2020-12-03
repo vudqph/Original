@@ -39,6 +39,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -121,19 +122,19 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
                     String url = "https://sotaythucung.blogspot.com/search/label/Th%C3%BA%20c%C6%B0ng";
                     Document document = Jsoup.connect(url).get();
                     Elements data = document.select("div.item-content");
+                    Log.e("SIZE", "" + data.size());
                     TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
                     tinTucList = tinTucDAO.getAllNews();
                     for (int i = 0; i < data.size(); i++) {
                         String idNews = "new0" + i;
-                        String img = data.select("div.item-thumbnail").select("img").eq(i).attr("src");
                         String title = data.select("div.item-title").select("a").eq(i).text();
-                        String urlPage = data.select("div.item-title").select("a").eq(i).attr("href");
-                        Log.d("items", " item: " + img + " Title: " + title + "urlPage: " + urlPage);
-                            if (!img.isEmpty()) {
-                                tinTucDAO.addNews(new TinTuc(title, "news0" + i, img, urlPage));
-                                Log.d("items", " item: " + img + " Title: " + idNews + "urlPage: " + urlPage);
-                            }
-
+                        String urlPage = data.select("div.item-thumbnail").select("a").eq(i).attr("href");
+                        String img = data.select("img").eq(i).attr("src");
+                        String newImgie = img.replace("w72-h72", "w720-h720");
+                        if (!img.isEmpty()) {
+                            tinTucDAO.addNews(new TinTuc(title, idNews, newImgie, urlPage));
+                            Log.d("items", " item: " + img + " Title: " + title + "urlPage: " + urlPage);
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
