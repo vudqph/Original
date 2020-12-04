@@ -10,4 +10,5 @@
     <color name="content_text_color">#999da4</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="header">#f6b5b9</color>
 </resources>

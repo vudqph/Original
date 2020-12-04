@@ -21,8 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".petsnews.NewsMainActivity">
-
+        <activity android:name=".petsnews.NewsMainActivity"
+            android:theme="@style/AppTheme.NoActionBarr">
 
         </activity>
         <!--

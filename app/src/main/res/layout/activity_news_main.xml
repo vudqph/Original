@@ -3,68 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#FFFFFF"
-        android:fitsSystemWindows="true">
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap">
+            app:contentScrim="@color/white"
+            app:expandedTitleMarginBottom="20dp"
+            app:expandedTitleMarginStart="15dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/imgHeaderNews"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-               />
+                android:scaleType="centerCrop"
+                android:id="@+id/imgHeaderNews"/>
 
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/tool_bar_news"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="?actionBarSize"-->
-<!--                app:contentInsetStart="0dp"-->
-<!--                app:contentInsetStartWithNavigation="0dp"-->
-<!--                app:layout_collapseMode="pin"-->
-<!--                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />-->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarNews"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:overScrollMode="never"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:ignore="WebViewLayout">
+            android:padding="10dp">
 
             <TextView
-                android:id="@+id/tvTitleNews"
+                android:id="@+id/tvHeaderNews"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This is Header" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <WebView
-                android:layout_marginTop="20dp"
                 android:id="@+id/webviewNews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp" />
+                android:layout_height="match_parent"
+                android:layout_margin="5dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
