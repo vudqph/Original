@@ -9,34 +9,13 @@
     android:orientation="vertical"
     tools:context=".petservice.BenhVienActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp">
-
-        <EditText
-            android:layout_marginRight="5dp"
-            android:layout_width="250dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp"
-            android:hint="Search"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/custom_edittext"/>
-
-        <Button
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Search"
-            android:background="@drawable/custom_edittext"/>
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recBenhVien"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="110dp" />
+        android:layout_marginTop="60dp" />
 
     <include
         layout="@layout/drawer_toolbar"

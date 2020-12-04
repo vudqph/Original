@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,16 +25,19 @@ import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.sqlite.BenhVienDAO;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHolder> {
+public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHolder> implements Filterable {
     private Context context;
     private List<BenhVien> benhVienList;
+    private List<BenhVien> benhVienListFull;
     Dialog dialog;
 
     public BenhVienAdapter(Context context, List<BenhVien> benhVienList) {
         this.context = context;
         this.benhVienList = benhVienList;
+        benhVienListFull= new ArrayList<>(benhVienList);
     }
 
 
@@ -138,4 +143,36 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         }
 
     }
+    public Filter getFilter(){
+        return mFilter;
+    }
+    private Filter mFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<BenhVien> filteredList = new ArrayList<>();
+
+            if (constraint==null || constraint.length() == 0){
+                filteredList.addAll(benhVienListFull);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (BenhVien item : benhVienListFull){
+                    if (item.getTenBenhVien().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values=filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            benhVienList.clear();
+            benhVienList.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

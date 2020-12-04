@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,21 +16,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import vn.poly.sotaythucung.R;
+import vn.poly.sotaythucung.model.ThuCung;
 import vn.poly.sotaythucung.model.TinTuc;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 import vn.poly.sotaythucung.sqlite.TinTucDAO;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder> {
+class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder> implements Filterable {
     private List<TinTuc> tinTucList;
+    private List<TinTuc> tinTucListFull;
     private Context context;
 
     public TinTucAdapter(List<TinTuc> tinTucList, Context context) {
         this.tinTucList = tinTucList;
         this.context = context;
+        tinTucListFull=new ArrayList<>(tinTucList);
+
     }
 
     @NonNull
@@ -102,5 +109,39 @@ class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder> {
             imgIconSave = itemView.findViewById(R.id.imgIconSave);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return mFilter;
+    }
+    private Filter mFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<TinTuc> filteredList = new ArrayList<>();
+
+            if (constraint==null || constraint.length() == 0){
+                filteredList.addAll(tinTucListFull);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (TinTuc item : tinTucListFull){
+                    if (item.getTitleNews().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values=filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            tinTucList.clear();
+            tinTucList.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 }

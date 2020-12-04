@@ -44,11 +44,7 @@
             android:name=".petsnews.TinTucThuCungActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".greetscreen.ManHinhChaoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".petservice.ShopThuCungActivity"
@@ -61,7 +57,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home.TrangChuActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
