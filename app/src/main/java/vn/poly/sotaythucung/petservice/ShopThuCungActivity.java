@@ -48,7 +48,7 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         cuaHangList = new ArrayList<>();
         addCuaHang();
         cuaHangAdapter = new CuaHangAdapter(cuaHangList, this);
-        recCuaHangThuCung.setLayoutManager(new LinearLayoutManager(this));
+        recCuaHangThuCung.setLayoutManager(new GridLayoutManager(this,2));
         recCuaHangThuCung.setAdapter(cuaHangAdapter);
         Menu();
     }
@@ -95,8 +95,8 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
     }
 
     public void addCuaHang() {
-        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store,21.03384013819058, 105.81026261195504));
-        cuaHangList.add(new CuaHang("CH02", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.image_store,21.03384013819058, 105.81026261195504));
+        cuaHangList.add(new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.bg_shoppet,21.03384013819058, 105.81026261195504));
+        cuaHangList.add(new CuaHang("CH02", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Hà Nội", R.drawable.bg_shoppet,21.03384013819058, 105.81026261195504));
 
     }
 }

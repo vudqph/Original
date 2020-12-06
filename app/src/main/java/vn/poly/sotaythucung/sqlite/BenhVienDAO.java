@@ -3,6 +3,7 @@ package vn.poly.sotaythucung.sqlite;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import vn.poly.sotaythucung.model.BenhVien;
 
@@ -15,7 +16,6 @@ public class BenhVienDAO {
     public BenhVienDAO(SQLiteDB sqLiteDB) {
         this.sqLiteDB = sqLiteDB;
     }
-
 
 
     public void xoaBenhVien(String id) {
@@ -60,7 +60,7 @@ public class BenhVienDAO {
         return benhVienList;
     }
 
-    public List<BenhVien>getMap() {
+    public List<BenhVien> getMap() {
         List<BenhVien> benhVienList = new ArrayList<>();
         String truyVan = "SELECT * FROM benhVien";
         Cursor cursor = sqLiteDB.getWritableDatabase().rawQuery(truyVan, null);
@@ -75,6 +75,36 @@ public class BenhVienDAO {
                 benhVien.setViDo(Double.parseDouble(viDo));
                 benhVien.setDanhGiaBenhVien(Integer.parseInt(rate));
                 benhVienList.add(benhVien);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return benhVienList;
+    }
+
+    public List<BenhVien> searchBenhVien(String search) {
+        List<BenhVien> benhVienList = new ArrayList<>();
+        String truyVan = "SELECT * FROM benhVien where benhVien.diaChiBenhVien like '%" + search + "%' or benhVien.tenBenhVien like '%" + search + "%'";
+        Log.d("TRuy Van", truyVan);
+        Cursor cursor = sqLiteDB.getWritableDatabase().rawQuery(truyVan, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String tenBenhVien = cursor.getString(1);
+                String anh = cursor.getString(2);
+                String diaChiBenhVien = cursor.getString(3);
+                String kinhDo = cursor.getString(4);
+                String viDo = cursor.getString(5);
+                String rate = cursor.getString(6);
+                BenhVien benhVien = new BenhVien();
+                benhVien.setTenBenhVien(tenBenhVien);
+                benhVien.setDiaChiBenhVien(diaChiBenhVien);
+                benhVien.setViDo(Double.parseDouble(viDo));
+                benhVien.setKinhDo(Double.parseDouble(kinhDo));
+                benhVien.setDanhGiaBenhVien(Integer.parseInt(rate));
+                benhVien.setResouceImages(Integer.parseInt(anh));
+                benhVienList.add(benhVien);
+
                 cursor.moveToNext();
             }
             cursor.close();

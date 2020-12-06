@@ -13,7 +13,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import vn.poly.sotaythucung.setting.CaiDatActivity;
@@ -42,12 +46,15 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
     Toolbar toolbar;
     NavigationView navigationView;
     List<BenhVien> benhVienList;
+    EditText edtSearchHospital;
+    Button btnSearchHospital;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benh_vien);
         sqLiteDB = new SQLiteDB(this);
+        edtSearchHospital = findViewById(R.id.edtSearchHospital);
         BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
         recBenhVien = findViewById(R.id.recBenhVien);
 //        delete();
@@ -57,12 +64,20 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
         benhVienList = benhVienDAO.getAllBenhVien();
         benhVienAdapter = new BenhVienAdapter(this, benhVienList);
         recBenhVien.setAdapter(benhVienAdapter);
+        btnSearchHospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchHospital();
+            }
+        });
     }
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("Bệnh Viện Thú Cưng");
         setSupportActionBar(toolbar);
+        btnSearchHospital = findViewById(R.id.btnSearchHospital);
+        edtSearchHospital = findViewById(R.id.edtSearchHospital);
         drawerLayout = findViewById(R.id.drawerBenhVien);
         navigationView = findViewById(R.id.navigation_view);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
@@ -72,19 +87,6 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    //    private List<BenhVien> benhVienList() {
-//        List<BenhVien> benhVienList = new ArrayList<>();
-//        BenhVien benhVien = new BenhVien("BV01", "Bệnh Viện Thú Cưng", "Số 3 Nguyễn Trải", R.drawable.hospital_item))
-//        ;
-////        benhVienList.add(new BenhVien("BV01", "Thú Cưng Hà Nội", "Số 3 Nguyễn Trải", R.drawable.hospital_item));
-////        benhVienList.add(new BenhVien("BV01", "Bệnh Viện Lan Anh", "Số 3 Nguyễn Trải", R.drawable.hospital_item));
-////        benhVienList.add(new BenhVien("BV01", "Pets Hospital", "Số 3 Nguyễn Trải", R.drawable.hospital_item));
-////        benhVienList.add(new BenhVien("BV01", "Animal Viet Nam", "Số 3 Nguyễn Trải", R.drawable.hospital_item));
-//        BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
-//        benhVienDAO.themBenhVien(benhVien);
-//        return benhVienList;
-//
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -122,9 +124,18 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
         benhVienDAO.themBenhVien(benhVien2);
         benhVienDAO.themBenhVien(benhVien3);
         benhVienDAO.themBenhVien(benhVien4);
-//        benhVienDAO.themBenhVien(benhVien5);
-//        benhVienDAO.themBenhVien(benhVien6);
-//        benhVienDAO.themBenhVien(benhVien7);
+
+    }
+
+    private void SearchHospital() {
+        String search = edtSearchHospital.getText().toString();
+        if (!search.isEmpty()){
+            BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
+            benhVienList = benhVienDAO.searchBenhVien(search);
+            benhVienAdapter = new BenhVienAdapter(this, benhVienList);
+            recBenhVien.setAdapter(benhVienAdapter);
+            Log.d("Check","Check "+benhVienList.size());
+        }
 
     }
 
