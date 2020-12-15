@@ -57,7 +57,7 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Cửa Hàng Thú Cưng");
+        toolbar.setTitle(R.string.title_activity_shop_pet);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerTC);
         navigationView = findViewById(R.id.navigation_view);

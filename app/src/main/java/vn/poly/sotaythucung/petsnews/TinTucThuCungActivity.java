@@ -82,7 +82,7 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Tin Tức Thú Cưng");
+        toolbar.setTitle(R.string.title_activity_pet_news);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerTinTuc);
         navigationView = findViewById(R.id.navigation_view);

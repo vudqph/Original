@@ -4,39 +4,39 @@
         <item
             android:id="@+id/home_pet"
             android:icon="@drawable/ic_vt_home_page"
-            android:title="Home" />
+            android:title="@string/menu_nav_title_home" />
         <item
             android:id="@+id/news_pet"
             android:icon="@drawable/ic_vt_news"
-            android:title="News Pet" />
+            android:title="@string/menu_nav_title_news" />
 
         <item android:title="Service Pet">
                 <menu>
                         <item
                             android:id="@+id/hospital_pet"
                             android:icon="@drawable/ic_vt_hospital"
-                            android:title="Veterinary hospital" />
+                            android:title="@string/menu_nav_title_hospital" />
                         <item
                             android:id="@+id/shop_pet"
                             android:icon="@drawable/ic_vt_store"
-                            android:title="Shop Pet" />
+                            android:title="@string/menu_nav_title_shop" />
                 </menu>
         </item>
         <item
             android:id="@+id/setup"
             android:icon="@drawable/ic_vt_settings"
-            android:title="Settings" />
+            android:title="@string/menu_nav_title_setting" />
 
         <item android:title="CONNECT WITH US">
                 <menu>
                         <item
                             android:id="@+id/facebook"
                             android:icon="@drawable/facebook"
-                            android:title="Facebook" />
+                            android:title="@string/menu_nav_title_facebook" />
                         <item
                             android:id="@+id/twitter"
                             android:icon="@drawable/twitter"
-                            android:title="Twitter" />
+                            android:title="@string/menu_nav_title_twitter" />
                 </menu>
         </item>
 
@@ -45,7 +45,7 @@
                         <item
                             android:id="@+id/exit"
                             android:icon="@drawable/ic_baseline_exit_to_app_24"
-                            android:title="Exit" />
+                            android:title="@string/menu_nav_title_exit" />
                 </menu>
         </item>
 </menu>
