@@ -148,4 +148,25 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         }
         return true;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+//        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
+        MenuItem searchItem = menu.findItem(R.id.action_menu);
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                cuaHangAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
 }

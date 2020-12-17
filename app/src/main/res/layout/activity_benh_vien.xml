@@ -9,12 +9,13 @@
     android:orientation="vertical"
     tools:context=".petservice.BenhVienActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recBenhVien"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"/>
+        android:layout_marginTop="60dp" />
 
     <include
         layout="@layout/drawer_toolbar"
@@ -37,31 +38,5 @@
         app:menu="@menu/drawer_menu">
 
     </com.google.android.material.navigation.NavigationView>
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal">-->
-
-    <!--        <EditText-->
-    <!--            android:id="@+id/edtSearchHospital"-->
-    <!--            android:layout_width="241dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_alignParentStart="true"-->
-    <!--            android:layout_alignParentLeft="true"-->
-    <!--            android:layout_alignParentTop="true"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:hint="Search Hopistal"-->
-    <!--            android:inputType="textPersonName"-->
-    <!--            android:text="Name" />-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/btnSearchHospital"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:text="Tìm Kiếm" />-->
-    <!--    </LinearLayout>-->
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
