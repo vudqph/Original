@@ -3,6 +3,7 @@ package vn.poly.sotaythucung.home;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -60,7 +61,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Trang Chủ");
+        toolbar.setTitle(R.string.title_activity_home);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigation_view);
@@ -134,25 +135,22 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        getMenuInflater().inflate(R.menu.item_search, menu);
 //        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
-        return true;
-    }
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        boolean temp = true;
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        if (item.getItemId() == R.id.btn_search_toolbar && temp==true) {
-            transaction.add(R.id.frame_layout_frag_search_trangchu, searchFragment);
-            transaction.commit();
-            temp=false;
-        }else if (item.getItemId() == R.id.btn_search_toolbar && temp==false){
-            transaction.remove(searchFragment);
-            transaction.commit();
-            temp=true;
-        }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                trangChuAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         return true;
     }
 }

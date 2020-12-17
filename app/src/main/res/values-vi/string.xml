@@ -1,4 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Sổ Tay Thú Cưng</string>
 
+    <!--    Navigation menu-->
+    <string name="menu_nav_title_home">Trang chủ</string>
+    <string name="menu_nav_title_news">Tin Tức Thú Cưng</string>
+    <string name="menu_nav_title_hospital">Bệnh Viện Thú Y</string>
+    <string name="menu_nav_title_shop">Cửa Hàng Thú Cưng</string>
+    <string name="menu_nav_title_facebook">Facebook</string>
+    <string name="menu_nav_title_twitter">Twitter</string>
+    <string name="menu_nav_title_setting">Cài Đặt</string>
+    <string name="menu_nav_title_exit">Thoát</string>
+
+    <string name="open">Mở</string>
+    <string name="close">Đóng</string>
+
+    <!--    Name activity-->
+    <string name="title_activity_maps_benh_vien">Bản Đồ Bệnh Viện</string>
+    <string name="title_activity_shop_pet">Cửa Hàng Thú Cưng</string>
+    <string name="title_activity_veterinary_hospital">Bệnh Viện Thú Y</string>
+    <string name="title_activity_setting">Cài Đặt</string>
+    <string name="title_activity_home">Trang Chủ</string>
+    <string name="title_activity_pet_news">Thông Tin Thú Cưng</string>
+
+    <!--    Layout Setting-->
+    <string name="button_setting_screen_mode">Chế Độ Màn Hình</string>
+    <string name="button_setting_language">Ngôn Ngữ</string>
+    <string name="button_setting_screen_light">Sáng</string>
+    <string name="button_setting_screen_dark">Tối</string>
+    <string name="button_setting_english">Tiếng Anh</string>
+    <string name="button_setting_vietnamese">Tiếng Việt</string>
+    <string name="button_setting_cancel">Hủy</string>
+
+    <!--    Layout Exit-->
+    <string name="button_exit_yes">Có</string>
+    <string name="button_exit_no">Không</string>
+    <string name="button_exit_title">Bạn có chắc muốn thoát?</string>
+    <string name="button_exit">Thoát</string>
+
+    <!--    Info Hospital-->
+    <string name="title_info_hospital_title">Thông Tin Bệnh Viện</string>
+    <string name="title_info_hospital_name">Tên Bệnh Viện</string>
+    <string name="title_info_hospital_address">Địa Chỉ</string>
+    <string name="title_info_hospital_service">Dịch Vụ</string>
+
+    <!-- Shop -->
+    <string name="title_info_shop_title">Thông Tin Cửa Hàng</string>
+    <string name="title_info_shop_name">Tên Cửa Hàng</string>
+    <string name="title_info_shop_address">Địa chỉ</string>
+    <string name="title_info_shop_service">Dịch vụ</string>
+
+    <!--    Info Pet-->
+    <string name="title_info_pet_title">Thông Tin Thú Cưng</string>
+    <string name="title_info_pet_name">Tên thú cưng</string>
+    <string name="title_info_pet_feature">Đặc điểm</string>
+    <string name="title_info_pet_species">Chủng loại</string>
+    <string name="title_info_pet_image">Hình ảnh</string>
+
+    <string name="button_vietnamese">Tiếng Việt</string>
+    <string name="button_english">Tiếng Anh</string>
+
+    <!--    name pet-->
+    <string name="name_dog">Chó</string>
+    <string name="name_cat">Mèo</string>
+    <string name="name_cow">Bò</string>
+    <string name="name_sheep">Cừu</string>
 </resources>

@@ -1,23 +1,84 @@
 <resources>
-    <string name="app_name" translatable="false">PetProjects</string>
-    <string name="title_activity_trang_chu" translatable="false">TrangChuActivity</string>
-    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
-    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
-    <string name="nav_header_title" translatable="false">Sổ Tay Thú Cưng</string>
-    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
-    <string name="nav_header_desc" translatable="false">Navigation header</string>
-    <string name="action_settings" translatable="false">Settings</string>
+    <string name="app_name">Pet Handbook</string>
+    <!--    Navigation View-->
+    <string name="menu_nav_title_home">Home</string>
+    <string name="menu_nav_title_news">Pet\'s New</string>
+    <string name="menu_nav_title_hospital">Veterinary Hospital</string>
+    <string name="menu_nav_title_shop">Shop Pet</string>
+    <string name="menu_nav_title_facebook">Facebook</string>
+    <string name="menu_nav_title_twitter">Twitter</string>
+    <string name="menu_nav_title_setting">Setting</string>
+    <string name="menu_nav_title_exit">Exit</string>
 
-    <string name="menu_home" translatable="false">Trang Chủ</string>
-    <string name="menu_gallery" translatable="false">Dịch Vụ Thú Cưng</string>
-    <string name="menu_slideshow" translatable="false">Tin Tức Thú Cưng</string>
-    <string name="menu_setting" translatable="false">Cài Đặt</string>
-    <string name="open" translatable="false">open</string>
-    <string name="close" translatable="false">close</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="title_activity_maps_benh_vien" translatable="false">Map</string>
-    <!-- Mutiple Language -->
+
+    <string name="title_activity_maps_benh_vien">Hospital Map</string>
+    <string name="title_activity_shop_pet">Shop Pet</string>
+    <string name="title_activity_veterinary_hospital">Veterinary Hospital</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_pet_news">Pet\'s News</string>
+
+    <!--    Layout Setting-->
+    <string name="button_setting_screen_mode">Screen Mode</string>
+    <string name="button_setting_language">Language</string>
+    <string name="button_setting_screen_light">Light</string>
+    <string name="button_setting_screen_dark">Dark</string>
+    <string name="button_setting_english">English</string>
+    <string name="button_setting_vietnamese">VietNamese</string>
+    <string name="button_setting_cancel">Cancel</string>
+
+    <!--    Layout Exit-->
+    <string name="button_exit_yes">Yes</string>
+    <string name="button_exit_no">No</string>
+    <string name="button_exit_title">Do you want to exit?</string>
+    <string name="button_exit">Thoát</string>
+    <!--    Info Hospital-->
+    <string name="title_info_hospital_title">Hospital Infomation</string>
+    <string name="title_info_hospital_name">Hospital\'s Name</string>
+    <string name="title_info_hospital_address">Address</string>
+    <string name="title_info_hospital_service">Service</string>
+
+    <!--    Info Pet-->
+    <string name="title_info_pet_title">Pet\'s Infomation</string>
+    <string name="title_info_pet_name">Name</string>
+    <string name="title_info_pet_feature">Feature</string>
+    <string name="title_info_pet_species">Species</string>
+    <string name="title_info_pet_image">Image</string>
+
+    <string name="button_vietnamese">VietNamese</string>
+    <string name="button_english">English</string>
+
+    <!--    name pet-->
+    <string name="name_dog">Dog</string>
+    <string name="name_cat">Cat</string>
+    <string name="name_cow">Cow</string>
+    <string name="name_sheep">Sheep</string>
+    <string name="type_pet">Animal</string>
+
+    <!-- Shop -->
+    <string name="title_info_shop_title">Shop Infomation</string>
+    <string name="title_info_shop_name">Name</string>
+    <string name="title_info_shop_address">Address</string>
+    <string name="title_info_shop_service">Service</string>
+    <!--untranslatable-->
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_vietnamese" translatable="false">Tiếng Việt</string>
 
 
+    <string-array name="language_names">
+        <item>@string/language_english</item>
+        <item>@string/language_vietnamese</item>
+    </string-array>
+
+    <string name="language_english_code" translatable="false">en</string>
+    <string name="language_vietnamese_code" translatable="false">vi</string>
+
+    <string-array name="language_codes">
+        <item>@string/language_english_code</item>
+        <item>@string/language_vietnamese_code</item>
+    </string-array>
 </resources>

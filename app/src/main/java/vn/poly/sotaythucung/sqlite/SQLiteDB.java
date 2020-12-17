@@ -37,6 +37,7 @@ public class SQLiteDB extends SQLiteOpenHelper {
     public static final String COLUMN_HOSPITAL_MAPLONG = "kinhDoBenhVien";
     public static final String COLUMN_HOSPITAL_MAPLAT = "viDoBenhVien";
     public static final String COLUMN_HOSPITAL_RATES = "danhGiaBenhVien";
+    public static final String COLUMN_HOSPITAL_SERVICE = "dichVuBenhVien";
     /* ----------------------------------------------*/
 
 
@@ -71,7 +72,8 @@ public class SQLiteDB extends SQLiteOpenHelper {
             COLUMN_HOSPITAL_LOCATION + " varChar(200)," +
             COLUMN_HOSPITAL_MAPLONG + " double not null," +
             COLUMN_HOSPITAL_MAPLAT + " double not null," +
-            COLUMN_HOSPITAL_RATES + " integer)";
+            COLUMN_HOSPITAL_RATES + " integer not null," +
+            COLUMN_HOSPITAL_SERVICE + " varchar(500))";
 
     private static final String DATABASE_CREATE_SHOP = "create table " + THREE_TABLE_NAME + "(" +
             COLUMN_SHOP_ID + " char(10) primary key not null," +

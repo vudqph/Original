@@ -5,25 +5,31 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import vn.poly.sotaythucung.model.BenhVien;
 import vn.poly.sotaythucung.model.ThuCung;
 import vn.poly.sotaythucung.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHolder> {
+public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHolder> implements Filterable {
     private Context context;
     private List<ThuCung> thuCungList;
     Dialog dialog;
+    private List<ThuCung> thuCungListAll;
 
     public TrangChuAdapter(Context context, List<ThuCung> thuCungList) {
         this.context = context;
         this.thuCungList = thuCungList;
+        this.thuCungListAll = new ArrayList<>(thuCungList);
     }
 
     @NonNull
@@ -60,6 +66,43 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHo
         return 0;
     }
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ThuCung> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(thuCungListAll);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (ThuCung item : thuCungListAll) {
+                    if (item.getTenThuCung().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, Filter.FilterResults results) {
+            thuCungList.clear();
+            thuCungList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgThuCung;
         TextView tvTenThuCung;
@@ -70,4 +113,6 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHo
             tvTenThuCung = itemView.findViewById(R.id.tvTenThuCung);
         }
     }
+
+
 }

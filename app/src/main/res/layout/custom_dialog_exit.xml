@@ -18,7 +18,7 @@
             android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:paddingTop="7dp"
-            android:text="Bạn có chắc muốn thoát?"
+            android:text="@string/button_exit_title"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
             android:layout_marginRight="32dp"
             android:layout_marginBottom="21dp"
             android:background="@drawable/custom_edittext"
-            android:text="Có"
+            android:text="@string/button_exit_yes"
             android:textStyle="bold" />
 
         <Button
@@ -48,7 +48,7 @@
             android:layout_marginRight="119dp"
             android:layout_marginBottom="22dp"
             android:background="@drawable/custom_edittext"
-            android:text="Không"
+            android:text="@string/button_exit_no"
             android:textStyle="bold" />
 
     </RelativeLayout>

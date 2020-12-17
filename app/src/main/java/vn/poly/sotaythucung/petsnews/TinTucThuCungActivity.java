@@ -24,9 +24,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import vn.poly.sotaythucung.adapter.TinTucAdapter;
 import vn.poly.sotaythucung.model.TinTuc;
 import vn.poly.sotaythucung.setting.CaiDatActivity;
-import vn.poly.sotaythucung.sqlite.BenhVienDAO;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 import vn.poly.sotaythucung.sqlite.TinTucDAO;
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
@@ -81,7 +81,7 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Tin Tức Thú Cưng");
+        toolbar.setTitle(R.string.title_activity_pet_news);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerTinTuc);
         navigationView = findViewById(R.id.navigation_view);
@@ -118,39 +118,80 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                     connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                String url = "https://petshopsaigon.vn/nhom-tin/blog-thu-cung";
+                Document document = null;
                 try {
-                    String url = "https://sotaythucung.blogspot.com/search/label/Th%C3%BA%20c%C6%B0ng";
-                    Document document = Jsoup.connect(url).get();
-                    Elements data = document.select("div.item-content");
-                    Log.e("SIZE", "" + data.size());
-                    TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
-                    tinTucList = tinTucDAO.getAllNews();
-                    for (int i = 0; i < data.size(); i++) {
-                        String idNews = "new0" + i;
-                        String title = data.select("div.item-title").select("a").eq(i).text();
-                        String urlPage = data.select("div.item-thumbnail").select("a").eq(i).attr("href");
-                        String img = data.select("img").eq(i).attr("src");
-                        String newImgie = img.replace("w72-h72", "w720-h720");
-                        if (!img.isEmpty()) {
-                            tinTucDAO.addNews(new TinTuc(title, idNews, newImgie, urlPage));
-                            Log.d("items", " item: " + img + " Title: " + title + "urlPage: " + urlPage);
-                        }
-                    }
+                    document = Jsoup.connect(url).userAgent("Mozilla").get();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Elements data = document.getElementsByClass("noi_dung");
+                Log.e("SIZE", "" + data.size());
+                TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
+                if (data != null && data.size() > 0) {
+                    int dem = 0;
+                    for (Element element : data) {
+                        Element urll = element.getElementsByTag("a").first();
+                        Element img = element.getElementsByClass("img").first();
+                        Element title = element.getElementsByTag("h3").first();
+//
+//                        if (urll != null) {
+//
+//                            Log.e("CHECK", "URLBLOG: " + urlBlog);
+//                        }
+//                        if (img != null) {
+//
+//                            Log.e("CHECK", "IMAGERNEWS: " + src);
+//                        }
+                        if (title != null && urll != null && img != null) {
+                            String idNews = "ID0" + dem;
+                            String src = title.select("a").text();
+                            String image = img.select("img").attr("src");
+                            String urlBlog = urll.attr("href");
+                            tinTucDAO.addNews(new TinTuc(src, idNews, image, urlBlog));
+                            Log.d("items", " item: " + image + " Title: " + src + "urlPage: " + urlBlog);
+                            dem++;
+                            Log.d("items", " item: " + dem);
+                        }
+                    }
+
+                }
+
+
             } else {
                 checkInternet.setText("Không có kết nối Internet");
             }
+//                for (int i = 1; i < data.size(); i++) {
+//                    String idNews = "new0" + i;
+//                    String urlPage = data.select("h4.gridminfotitle").select("a").eq(i).attr("href");
+//                    String img = data.select("img").eq(i).attr("src");
+//                    String title = data.select("h4.gridminfotitle").select("a").select("span").eq(i).text();
+//                    Log.d("items", "item:  " + img + " Title: " + title + "urlPage : " + urlPage);
+//                    String newImgie = img.replace("w72-h72", "w720-h720");
+//                    if (!img.isEmpty()) {
+////                            tinTucDAO.addNews(new TinTuc(title, idNews, img, urlPage));
+//                        Log.d("items", " item: " + newImgie + " Title: " + title + "urlPage: " + urlPage);
+//                    }
+//                }
+//            } else {
+//                checkInternet.setText("Không có kết nối Internet");
+//            }
             return null;
         }
     }
 
     private void delete() {
-        String benhVien[] = new String[]{"news01", "news00", "news02", "news03", "news04", "news05"};
-        TinTucDAO benhVienDAO = new TinTucDAO(sqLiteDB);
-        for (int i = 0; i < benhVien.length; i++) {
-            benhVienDAO.deleteNews(benhVien[i]);
+        TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
+        tinTucList = tinTucDAO.getAllNews();
+//        String benhVien[] = new String[]{"news01", "news00", "news02", "news03", "news04", "news05"};
+//        TinTucDAO tintucDao = new TinTucDAO(sqLiteDB);
+        for (int i = 0; i < tinTucList.size(); i++) {
+            tinTucDAO.deleteNews(tinTucList.get(i).getIdNews());
         }
     }
 

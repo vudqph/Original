@@ -1,14 +1,14 @@
 package vn.poly.sotaythucung.model;
 
 public class BenhVien {
-    private String idBenhVien, tenBenhVien, DiaChiBenhVien;
+    private String idBenhVien, tenBenhVien, DiaChiBenhVien, dichVuBenhVien;
     private int resouceImages, danhGiaBenhVien;
     private double kinhDo, viDo;
 
     public BenhVien() {
     }
 
-    public BenhVien(String idBenhVien, String tenBenhVien, String diaChiBenhVien, int resouceImages, int danhGiaBenhVien, double kinhDo, double viDo) {
+    public BenhVien(String idBenhVien, String tenBenhVien, String diaChiBenhVien, int resouceImages, int danhGiaBenhVien, double kinhDo, double viDo, String dichVuBenhVien) {
         this.idBenhVien = idBenhVien;
         this.tenBenhVien = tenBenhVien;
         DiaChiBenhVien = diaChiBenhVien;
@@ -16,6 +16,7 @@ public class BenhVien {
         this.danhGiaBenhVien = danhGiaBenhVien;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
+        this.dichVuBenhVien = dichVuBenhVien;
     }
 
     public String getIdBenhVien() {
@@ -72,5 +73,13 @@ public class BenhVien {
 
     public void setViDo(double viDo) {
         this.viDo = viDo;
+    }
+
+    public String getDichVuBenhVien() {
+        return dichVuBenhVien;
+    }
+
+    public void setDichVuBenhVien(String dichVuBenhVien) {
+        this.dichVuBenhVien = dichVuBenhVien;
     }
 }

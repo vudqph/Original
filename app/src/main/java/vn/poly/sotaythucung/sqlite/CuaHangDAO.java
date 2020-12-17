@@ -9,7 +9,7 @@ import java.util.List;
 
 import vn.poly.sotaythucung.model.CuaHang;
 
-class CuaHangDAO {
+public class CuaHangDAO {
     private SQLiteDB sqLiteDB;
 
     public CuaHangDAO(SQLiteDB sqLiteDB) {
@@ -25,6 +25,7 @@ class CuaHangDAO {
         contentValues.put("diaDiemCuaHang", cuaHang.getDiaChiCuaHang());
         contentValues.put("kinhDoCuaHang", cuaHang.getKinhDoCuaHang());
         contentValues.put("vidoCuaHang", cuaHang.getViDoCuaHang());
+        contentValues.put("anhCuaHang", cuaHang.getAnhCuaHang());
         sqLiteDatabase.insert("cuaHang", null, contentValues);
     }
 
@@ -37,9 +38,9 @@ class CuaHangDAO {
             while (!cursor.isAfterLast()) {
                 String tenCuaHang = cursor.getString(1);
                 String dichVuCuaHang = cursor.getString(2);
-                String diaDiemCuaHang = cursor.getString(3);
-                String kinhDoCuaHang = cursor.getString(4);
-                String viDoCuaHang = cursor.getString(5);
+                String diaDiemCuaHang = cursor.getString(5);
+                String kinhDoCuaHang = cursor.getString(3);
+                String viDoCuaHang = cursor.getString(4);
                 String anhCuaHang = cursor.getString(6);
                 CuaHang cuaHang = new CuaHang();
                 cuaHang.setTenCuaHang(tenCuaHang);

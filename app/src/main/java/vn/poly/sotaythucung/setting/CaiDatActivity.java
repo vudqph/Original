@@ -8,12 +8,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
@@ -22,11 +25,14 @@ import vn.poly.sotaythucung.petservice.ShopThuCungActivity;
 import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.petsnews.TinTucThuCungActivity;
 import vn.poly.sotaythucung.home.TrangChuActivity;
+
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 public class CaiDatActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String listItem[];
-    Button btnNgonNgu, btnCheDoManHinh;
+    Button btnNgonNgu, btnCheDoManHinh,btnViet,btnAnh;;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -37,6 +43,8 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cai_dat);
         Menu();
+        btnViet=findViewById(R.id.btn_viet);
+        btnAnh=findViewById(R.id.btn_eng);
         btnNgonNgu = findViewById(R.id.btnNgonNgu);
         btnCheDoManHinh = findViewById(R.id.btnCheDoManHinh);
         btnCheDoManHinh.setOnClickListener(new View.OnClickListener() {
@@ -48,14 +56,35 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
         btnNgonNgu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DiaLogSingleChoiseLanguage();
+                final Dialog dialog = new Dialog(CaiDatActivity.this);
+                dialog.setContentView(R.layout.item_language);
+                dialog.setCancelable(false);
+                final TextView tvViet, tvAnh;
+                tvAnh = dialog.findViewById(R.id.tv_anh);
+                tvViet = dialog.findViewById(R.id.tv_viet);
+                tvAnh.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ganNgonNgu("en");
+                        dialog.cancel();
+                    }
+                });
+                tvViet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ganNgonNgu("vi");
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
             }
+
         });
     }
 
     private void Menu() {
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Cài Đặt");
+        toolbar.setTitle(R.string.title_activity_setting);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerCD);
         navigationView = findViewById(R.id.navigation_view);
@@ -67,10 +96,10 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
     }
 
     private void DiaLogSingleChoiseScreen() {
-        listItem = new String[]{"Tối", "Sáng"};
+        listItem = new String[]{getString(R.string.button_setting_screen_dark), getString(R.string.button_setting_screen_light)};
         int checkItem = 0;
         final AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
-        aBuilder.setTitle("Chọn Chế Độ");
+        aBuilder.setTitle(getString(R.string.button_setting_screen_mode));
         aBuilder.setSingleChoiceItems(listItem, checkItem, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(final DialogInterface dialogInterface, final int i) {
@@ -127,15 +156,24 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(CaiDatActivity.this, ShopThuCungActivity.class));
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(CaiDatActivity.this, CaiDatActivity.class));
-        }else if (item.getItemId() == R.id.facebook) {
+        } else if (item.getItemId() == R.id.facebook) {
             Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
-        }else if (item.getItemId() == R.id.twitter) {
+        } else if (item.getItemId() == R.id.twitter) {
             Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
-        }else if (item.getItemId() == R.id.exit) {
+        } else if (item.getItemId() == R.id.exit) {
             ThoatManHinh thoatManHinh = new ThoatManHinh();
             thoatManHinh.Exit(CaiDatActivity.this);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void ganNgonNgu(String language) {
+        Locale locale = new Locale(language);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+        Intent intent = new Intent(CaiDatActivity.this, CaiDatActivity.class);
+        startActivity(intent);
     }
 }

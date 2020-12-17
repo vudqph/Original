@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -84,13 +85,16 @@ public class NewsMainActivity extends AppCompatActivity {
             Document document = null;
             try {
                 document = Jsoup.connect(url).get();
-                document.getElementsByClass("widget Header").remove();
-                document.getElementsByClass("post-meta-wrapper").remove();
-                document.getElementById("comments").remove();
-                title = document.getElementsByClass("post-title entry-title").text();
-                document.getElementsByClass("post-title entry-title").remove();
-                Elements data = document.select("div.separator");
-                image = data.select("img").attr("src");
+                document.getElementsByClass("header-container").remove();
+                document.getElementsByTag("a").remove();
+                document.getElementsByClass("d_segment_menu_mobile tr_mobile").remove();
+                document.getElementsByClass("brecum container").remove();
+                document.getElementsByClass("umt_d_rela_products").remove();
+                document.getElementsByClass("footer-inner").remove();
+                document.getElementsByClass("tin_khac").remove();
+                title = document.getElementsByClass("tr_tieu_de").text();
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

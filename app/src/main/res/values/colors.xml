@@ -11,4 +11,6 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="header">#f6b5b9</color>
+    <color name="shadow_layout_home">#ADADAC</color>
+    <color name="text_color">#000000</color>
 </resources>

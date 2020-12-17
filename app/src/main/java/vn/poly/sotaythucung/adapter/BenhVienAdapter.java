@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,16 +25,20 @@ import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.sqlite.BenhVienDAO;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHolder> {
+public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHolder> implements Filterable {
     private Context context;
     private List<BenhVien> benhVienList;
+    List<BenhVien> benhVienListAll;
     Dialog dialog;
 
     public BenhVienAdapter(Context context, List<BenhVien> benhVienList) {
         this.context = context;
         this.benhVienList = benhVienList;
+        this.benhVienListAll = new ArrayList<>(benhVienList);
     }
 
 
@@ -59,7 +65,7 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         final TextView tvTTTenBV = view.findViewById(R.id.tvTTTenBV);
         final TextView tvTTDiaDiemBV = view.findViewById(R.id.tvTTDiaDiemBV);
         Button btnThoatTT = view.findViewById(R.id.btnThoatTT);
-        TextView tvTTDichVuBV = view.findViewById(R.id.tvTTDichVuBV);
+        final TextView tvTTDichVuBV = view.findViewById(R.id.tvTTDichVuBV);
 
         holder.imgXemThonTinBV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +73,7 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
                 List<BenhVien> benhVienList2 = benhVienDAO.getAllBenhVien();
                 tvTTTenBV.setText(benhVienList2.get(position).getTenBenhVien());
                 tvTTDiaDiemBV.setText(benhVienList2.get(position).getDiaChiBenhVien());
-
+                tvTTDichVuBV.setText(benhVienList2.get(position).getDichVuBenhVien());
                 dialog.setContentView(view);
                 dialog.show();
             }
@@ -122,6 +128,41 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         }
         return 0;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<BenhVien> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(benhVienListAll);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (BenhVien item : benhVienListAll) {
+                    if (item.getTenBenhVien().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            benhVienList.clear();
+            benhVienList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgBenhVien, imgXemThonTinBV, imgMapBenhVien, imgRateStar;

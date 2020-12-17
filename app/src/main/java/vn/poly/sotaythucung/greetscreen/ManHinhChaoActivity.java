@@ -5,12 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
 import vn.poly.sotaythucung.petservice.BenhVienActivity;
 import vn.poly.sotaythucung.R;
-
 public class ManHinhChaoActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +16,6 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         WaitScreen();
     }
-
     private void WaitScreen() {
         new Handler().postDelayed(new Runnable() {
             @Override

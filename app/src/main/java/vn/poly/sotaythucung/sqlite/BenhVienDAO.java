@@ -33,6 +33,7 @@ public class BenhVienDAO {
         contentValues.put("kinhDoBenhVien", benhVien.getKinhDo());
         contentValues.put("viDoBenhVien", benhVien.getViDo());
         contentValues.put("danhGiaBenhVien", benhVien.getDanhGiaBenhVien());
+        contentValues.put("dichVuBenhVien", benhVien.getDichVuBenhVien());
         sqLiteDatabase.insert("benhVien", null, contentValues);
 
     }
@@ -47,11 +48,12 @@ public class BenhVienDAO {
                 String tenBenhVien = cursor.getString(1);
                 int anhBenhVien = cursor.getInt(2);
                 String diaChiBenhVien = cursor.getString(3);
-
+                String dichVuBenhVien = cursor.getString(7);
                 BenhVien benhVien = new BenhVien();
                 benhVien.setTenBenhVien(tenBenhVien);
                 benhVien.setDiaChiBenhVien(diaChiBenhVien);
                 benhVien.setResouceImages(anhBenhVien);
+                benhVien.setDichVuBenhVien(dichVuBenhVien);
                 benhVienList.add(benhVien);
                 cursor.moveToNext();
             }

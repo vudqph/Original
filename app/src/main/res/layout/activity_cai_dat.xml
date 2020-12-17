@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerCD"
-    android:background="@drawable/background_trangchu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_trangchu"
     tools:context=".setting.CaiDatActivity">
 
     <RelativeLayout
@@ -21,7 +21,7 @@
             android:layout_marginTop="68dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/custom_edittext"
-            android:text="Ngôn Ngữ"
+            android:text="@string/button_setting_language"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +35,30 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/custom_edittext"
-            android:text="Chế Độ Màn Hình"
+            android:text="@string/button_setting_screen_mode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnNgonNgu" />
+
+        <Button
+            android:id="@+id/btn_viet"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/custom_edittext"
+            android:text="@string/button_vietnamese" />
+
+        <Button
+            android:id="@+id/btn_eng"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/custom_edittext"
+            android:text="@string/button_english" />
+
     </RelativeLayout>
 
     <include
