@@ -30,7 +30,8 @@
     <string name="button_setting_english">English</string>
     <string name="button_setting_vietnamese">VietNamese</string>
     <string name="button_setting_cancel">Cancel</string>
-
+    <string name="choose_language">Choose Language
+</string>
     <!--    Layout Exit-->
     <string name="button_exit_yes">Yes</string>
     <string name="button_exit_no">No</string>

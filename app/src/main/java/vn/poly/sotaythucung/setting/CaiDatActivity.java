@@ -54,27 +54,13 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
         btnNgonNgu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(CaiDatActivity.this);
-                dialog.setContentView(R.layout.item_language);
-                dialog.setCancelable(false);
-                final TextView tvViet, tvAnh;
-                tvAnh = dialog.findViewById(R.id.tv_anh);
-                tvViet = dialog.findViewById(R.id.tv_viet);
-                tvAnh.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ganNgonNgu("en");
-                        dialog.cancel();
-                    }
-                });
-                tvViet.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ganNgonNgu("vi");
-                        dialog.cancel();
-                    }
-                });
-                dialog.show();
+//                final Dialog dialog = new Dialog(CaiDatActivity.this);
+//                dialog.setContentView(R.layout.item_language);
+//                dialog.setCancelable(false);
+//                final TextView tvViet, tvAnh;
+//                tvAnh = dialog.findViewById(R.id.tv_anh);
+//                tvViet = dialog.findViewById(R.id.tv_viet);
+                DiaLogSingleChoiseLanguage();
 
             }
         });
@@ -124,22 +110,29 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
     }
 
     private void DiaLogSingleChoiseLanguage() {
-        listItem = new String[]{"VietNamese", "English"};
-        AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
-        aBuilder.setTitle("Chọn Chế Độ");
+        listItem = new String[]{getString(R.string.button_setting_vietnamese), getString(R.string.button_setting_english)};
+        final AlertDialog.Builder aBuilder = new AlertDialog.Builder(this);
+        aBuilder.setTitle(R.string.choose_language);
         aBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+                switch (i) {
+                    case 0:
+                        ganNgonNgu("vi");
+                        dialogInterface.dismiss();
+                        break;
+                    case 1:
+                        ganNgonNgu("en");
+                        dialogInterface.dismiss();
+                        break;
+                }
             }
         });
         aBuilder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         });
-        AlertDialog alertDialog = aBuilder.create();
         aBuilder.show();
     }
 
@@ -156,9 +149,9 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
         } else if (item.getItemId() == R.id.setup) {
             startActivity(new Intent(CaiDatActivity.this, CaiDatActivity.class));
         } else if (item.getItemId() == R.id.facebook) {
-            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Facebook", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.twitter) {
-            Toast.makeText(this, "Chưa cập nhật thông tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Twitter", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.exit) {
             ThoatManHinh thoatManHinh = new ThoatManHinh();
             thoatManHinh.Exit(CaiDatActivity.this);

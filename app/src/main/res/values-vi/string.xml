@@ -31,7 +31,7 @@
     <string name="button_setting_english">Tiếng Anh</string>
     <string name="button_setting_vietnamese">Tiếng Việt</string>
     <string name="button_setting_cancel">Hủy</string>
-
+<string name="choose_language">Chọn Ngôn Ngữ</string>
     <!--    Layout Exit-->
     <string name="button_exit_yes">Có</string>
     <string name="button_exit_no">Không</string>
