@@ -97,6 +97,7 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
                 Intent intent = new Intent(context, MapsBenhVienActivity.class);
                 intent.putExtra("KINHDO", benhVienList.get(position).getKinhDo());
                 intent.putExtra("VIDO", benhVienList.get(position).getViDo());
+                intent.putExtra("TENBV", benhVienList.get(position).getTenBenhVien());
                 context.startActivity(intent);
             }
         });
@@ -107,6 +108,7 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
                 Intent intent = new Intent(context, MapsBenhVienActivity.class);
                 intent.putExtra("KINHDO", benhVienList.get(position).getKinhDo());
                 intent.putExtra("VIDO", benhVienList.get(position).getViDo());
+                intent.putExtra("TENBV", benhVienList.get(position).getTenBenhVien());
                 context.startActivity(intent);
 
             }

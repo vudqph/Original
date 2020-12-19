@@ -69,12 +69,14 @@ public class BenhVienDAO {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
+                String tenBV = cursor.getString(1);
                 String kinhDo = cursor.getString(4);
                 String viDo = cursor.getString(5);
                 String rate = cursor.getString(6);
                 BenhVien benhVien = new BenhVien();
                 benhVien.setKinhDo(Double.parseDouble(kinhDo));
                 benhVien.setViDo(Double.parseDouble(viDo));
+                benhVien.setTenBenhVien(tenBV);
                 benhVien.setDanhGiaBenhVien(Integer.parseInt(rate));
                 benhVienList.add(benhVien);
                 cursor.moveToNext();

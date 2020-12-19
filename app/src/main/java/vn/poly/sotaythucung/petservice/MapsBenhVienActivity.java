@@ -43,12 +43,12 @@ public class MapsBenhVienActivity extends FragmentActivity implements OnMapReady
         Intent intent = getIntent();
         double kinhdo = intent.getDoubleExtra("KINHDO", 0);
         double viDo = intent.getDoubleExtra("VIDO", 0);
+        String tenBV = intent.getStringExtra("TENBV");
         Log.d("KD","kinhdo" + kinhdo);
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(kinhdo, viDo);
-
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Bệnh Viện Thú Y PETHEALTH - chi nhánh Bắc Từ Liêm"));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(tenBV));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,16f));
 
     }

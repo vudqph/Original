@@ -61,6 +61,7 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
                     Intent intent = new Intent(context, MapsBenhVienActivity.class);
                     intent.putExtra("KINHDO", cuaHangList.get(position).getKinhDoCuaHang());
                     intent.putExtra("VIDO", cuaHangList.get(position).getViDoCuaHang());
+                    intent.putExtra("TENBV", cuaHangList.get(position).getTenCuaHang());
                     context.startActivity(intent);
                 }
             });
@@ -71,6 +72,7 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
                     Intent intent = new Intent(context, MapsBenhVienActivity.class);
                     intent.putExtra("KINHDO", cuaHangList.get(position).getKinhDoCuaHang());
                     intent.putExtra("VIDO", cuaHangList.get(position).getViDoCuaHang());
+                    intent.putExtra("TENBV", cuaHangList.get(position).getTenCuaHang());
                     context.startActivity(intent);
                 }
             });

@@ -37,25 +37,32 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.ViewHo
     public TrangChuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trangchu, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.layout_tt_dongvat);
-        viewHolder.imgThuCung.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
+
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TrangChuAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final TrangChuAdapter.ViewHolder holder, final int position) {
         ThuCung thuCung = thuCungList.get(position);
         if (thuCungList == null) {
             return;
         }
         holder.imgThuCung.setImageResource(thuCung.getImageThuCung());
         holder.tvTenThuCung.setText(thuCung.getTenThuCung());
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.layout_tt_dongvat);
+        holder.imgThuCung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView textView = dialog.findViewById(R.id.tvTTThuCung);
+                TextView tvTTDacDiemThuCung = dialog.findViewById(R.id.tvTTDacDiemThuCung);
+                TextView species = dialog.findViewById(R.id.species);
+                tvTTDacDiemThuCung.setText(thuCungList.get(position).getDacDiemThuCung());
+                species.setText(thuCungList.get(position).getLoaiThuCung());
+                textView.setText(thuCungList.get(position).getTenThuCung());
+                dialog.show();
+            }
+        });
     }
 
     @Override
