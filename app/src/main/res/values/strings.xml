@@ -38,7 +38,7 @@
     <string name="button_exit">Thoát</string>
     <!--    Info Hospital-->
     <string name="title_info_hospital_title">Hospital Infomation</string>
-    <string name="title_info_hospital_name">Hospital\'s Name</string>
+    <string name="title_info_hospital_name">Name</string>
     <string name="title_info_hospital_address">Address</string>
     <string name="title_info_hospital_service">Service</string>
 

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import vn.poly.sotaythucung.model.CuaHang;
 import vn.poly.sotaythucung.R;
 import vn.poly.sotaythucung.petservice.MapsBenhVienActivity;
+import vn.poly.sotaythucung.petsnews.CheckOutOfMemory;
 import vn.poly.sotaythucung.sqlite.CuaHangDAO;
 import vn.poly.sotaythucung.sqlite.SQLiteDB;
 
@@ -51,8 +52,19 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
             CuaHang cuaHang = cuaHangList.get(position);
             holder.tvTenCuaHang.setText(cuaHang.getTenCuaHang());
             holder.tvDiaChiCuaHang.setText(cuaHang.getDiaChiCuaHang());
-            holder.imgCuaHang.setImageResource(cuaHang.getAnhCuaHang());
+            holder.imgCuaHang.setImageBitmap(CheckOutOfMemory.decodeSampledBitmapFromResource(context.getResources(), cuaHang.getAnhCuaHang(), 250, 250));
+            ;
             holder.imgMapShop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cuaHangList = cuaHangDAO.getAllStore();
+                    Intent intent = new Intent(context, MapsBenhVienActivity.class);
+                    intent.putExtra("KINHDO", cuaHangList.get(position).getKinhDoCuaHang());
+                    intent.putExtra("VIDO", cuaHangList.get(position).getViDoCuaHang());
+                    context.startActivity(intent);
+                }
+            });
+            holder.imgCuaHang.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     cuaHangList = cuaHangDAO.getAllStore();
@@ -126,7 +138,7 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (CuaHang item : cuaHangListFull) {
-                    if (item.getTenCuaHang().toLowerCase().contains(filterPattern)) {
+                    if (item.getTenCuaHang().toLowerCase().contains(filterPattern) || item.getDiaChiCuaHang().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

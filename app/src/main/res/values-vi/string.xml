@@ -21,7 +21,7 @@
     <string name="title_activity_veterinary_hospital">Bệnh Viện Thú Y</string>
     <string name="title_activity_setting">Cài Đặt</string>
     <string name="title_activity_home">Trang Chủ</string>
-    <string name="title_activity_pet_news">Thông Tin Thú Cưng</string>
+    <string name="title_activity_pet_news">Tin Tức Thú Cưng</string>
 
     <!--    Layout Setting-->
     <string name="button_setting_screen_mode">Chế Độ Màn Hình</string>
@@ -40,7 +40,7 @@
 
     <!--    Info Hospital-->
     <string name="title_info_hospital_title">Thông Tin Bệnh Viện</string>
-    <string name="title_info_hospital_name">Tên Bệnh Viện</string>
+    <string name="title_info_hospital_name">Tên</string>
     <string name="title_info_hospital_address">Địa Chỉ</string>
     <string name="title_info_hospital_service">Dịch Vụ</string>
 

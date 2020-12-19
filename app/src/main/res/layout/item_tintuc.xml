@@ -18,8 +18,7 @@
             android:id="@+id/imgTinTuc"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:layout_marginTop="10dp"
@@ -31,7 +30,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:marqueeRepeatLimit="marquee_forever"
-            android:text="Đây là test"
             android:textSize="12dp" />
         <LinearLayout
             android:layout_width="wrap_content"

@@ -22,8 +22,7 @@
                 android:id="@+id/imgBenhVien"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/hospital_item" />
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:id="@+id/imgRateStar"
@@ -66,16 +65,16 @@
 
             <ImageView
                 android:id="@+id/imgChiDuongMapp"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/icon_map" />
 
             <ImageView
                 android:id="@+id/imgXemThonTinBV"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/icon_infor" />
         </LinearLayout>

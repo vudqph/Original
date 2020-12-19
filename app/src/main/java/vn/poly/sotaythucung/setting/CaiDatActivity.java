@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class CaiDatActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String listItem[];
-    Button btnNgonNgu, btnCheDoManHinh,btnViet,btnAnh;;
+    Button btnNgonNgu, btnCheDoManHinh;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -43,8 +43,6 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cai_dat);
         Menu();
-        btnViet=findViewById(R.id.btn_viet);
-        btnAnh=findViewById(R.id.btn_eng);
         btnNgonNgu = findViewById(R.id.btnNgonNgu);
         btnCheDoManHinh = findViewById(R.id.btnCheDoManHinh);
         btnCheDoManHinh.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +75,10 @@ public class CaiDatActivity extends AppCompatActivity implements NavigationView.
                     }
                 });
                 dialog.show();
-            }
 
+            }
         });
+
     }
 
     private void Menu() {

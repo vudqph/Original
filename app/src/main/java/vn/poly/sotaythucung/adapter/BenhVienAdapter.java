@@ -90,7 +90,16 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
         holder.tvDiaDiemBV.setText(benhVien.getDiaChiBenhVien());
         holder.tvDiaDiemBV.setTextColor(Color.RED);
 
-
+        holder.imgBenhVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                benhVienList = benhVienDAO.getMap();
+                Intent intent = new Intent(context, MapsBenhVienActivity.class);
+                intent.putExtra("KINHDO", benhVienList.get(position).getKinhDo());
+                intent.putExtra("VIDO", benhVienList.get(position).getViDo());
+                context.startActivity(intent);
+            }
+        });
         holder.imgMapBenhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +154,7 @@ public class BenhVienAdapter extends RecyclerView.Adapter<BenhVienAdapter.ViewHo
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (BenhVien item : benhVienListAll) {
-                    if (item.getTenBenhVien().toLowerCase().contains(filterPattern)) {
+                    if (item.getTenBenhVien().toLowerCase().contains(filterPattern) || item.getDiaChiBenhVien().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

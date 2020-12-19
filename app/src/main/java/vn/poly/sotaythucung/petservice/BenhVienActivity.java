@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import vn.poly.sotaythucung.BuildConfig;
 import vn.poly.sotaythucung.setting.CaiDatActivity;
 import vn.poly.sotaythucung.umtility.ThoatManHinh;
 import vn.poly.sotaythucung.model.BenhVien;
@@ -59,6 +60,7 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
         benhVienList = benhVienDAO.getAllBenhVien();
         benhVienAdapter = new BenhVienAdapter(this, benhVienList);
         recBenhVien.setAdapter(benhVienAdapter);
+
     }
 
     private void Menu() {
@@ -100,10 +102,10 @@ public class BenhVienActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void ThemBenhVien() {
-        BenhVien benhVien = new BenhVien("BV01", "Phòng khám thú y Mỹ Đình", "Mỹ Đình, Nam Từ Liêm, Hà Nội", R.drawable.bg_hopistal, 4, 21.040240209042555, 105.7667198273969, "Bệnh viên chuyên khám cho thú cưng");
-        BenhVien benhVien2 = new BenhVien("BV02", "Bệnh Viện Thú Y PetHealth", "Hà Nội", R.drawable.hospital_item, 3, 21.0152059, 105.8232361, "Bệnh viên chuyên khám cho thú cưng");
-        BenhVien benhVien3 = new BenhVien("BV03", "Bệnh Viện Ba Lan", "Hà Nội", R.drawable.hospital_item, 1, 21.053551700845947, 105.78829908194113, "Bệnh viên chuyên khám cho thú cưng");
-        BenhVien benhVien4 = new BenhVien("BV04", "Bệnh Viện Xmmm", "Nghệ An", R.drawable.bg_hopistal, 1, 21.053551700845947, 105.78829908194113, "Bệnh viên chuyên khám cho thú cưng");
+        BenhVien benhVien = new BenhVien("BV01", "Phòng khám thú y Mỹ Đình", "Ngõ 25 Phố Nguyễn Cơ Thạch, Mỹ Đình, Nam Từ Liêm, Hà Nội, Vietnam", R.drawable.bg_hopistal, 4, 21.040240209042555, 105.7667198273969, "Khám sức khoẻ tổng quan (miễn phí 100%), tư vấn chăm sóc và phòng bệnh, cấp cứu, điều trị, phẫu thuật ngoại khoa, triệt sản, siêu âm, mổ đẻ, đỡ đẻ, dịch vụ làm đẹp rất nhiều thức ăn, đồ chơi, quần áo, phụ kiện cho chó mèo.");
+        BenhVien benhVien2 = new BenhVien("BV02", "Bệnh Viện Thú Y PetHealth", "Hà Nội", R.drawable.hospital_item, 4, 21.0152059, 105.8232361, "PetHealth đã mở rộng thêm nhiều dịch vụ mới như Bác sĩ thú y tại nhà, Khách sạn chó mèo, Cắt tỉa lông chó mèo… Tất cả những điều đó đều nhằm mang đến cho khách hàng những trải nghiệm tốt nhất, đáng nhớ nhất.");
+        BenhVien benhVien3 = new BenhVien("BV03", "Veterinary Hospital - National Institute of Veterinary Research", "74 Trường Chinh, Phương Đình, Đống Đa, Hà Nội, Vietnam", R.drawable.hospital_item, 1, 20.998437, 105.839950, "Bệnh viện Thú Y Quốc Gia Bệnh Viện Thú Y  chuyên khám chữa trị, phẫu thuật, siêu âm, tiêm phòng, tẩy giun, cắt tỉa lông, cắt tai,nhận điều trị nội trú, xét nghiệm máu cho thú cưng");
+        BenhVien benhVien4 = new BenhVien("BV04", "Phòng khám thú y 4PET", "102 Trường Chinh, Phương Đình, Thanh Xuân, Hà Nội, Vietnam", R.drawable.bg_hopistal, 5, 20.9988831, 105.8357409, "Bệnh viên chuyên khám cho thú cưng");
 
         BenhVienDAO benhVienDAO = new BenhVienDAO(sqLiteDB);
         benhVienDAO.themBenhVien(benhVien);

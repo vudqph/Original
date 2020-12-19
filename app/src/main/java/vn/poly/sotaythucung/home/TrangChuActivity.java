@@ -100,37 +100,21 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
 
     private void addThuCung() {
         thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
-        thuCungList.add(new ThuCung("TC01", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
-        thuCungList.add(new ThuCung("TC01", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
-        thuCungList.add(new ThuCung("TC01", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
-        thuCungList.add(new ThuCung("TC01", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
+        thuCungList.add(new ThuCung("TC02", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
+        thuCungList.add(new ThuCung("TC03", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
+        thuCungList.add(new ThuCung("TC04", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
+        thuCungList.add(new ThuCung("TC05", "Lợn", "Động Vật", "Canh Nhà", "Không", R.drawable.pig));
+        thuCungList.add(new ThuCung("TC06", "Gà", "Động Vật", "Canh Nhà", "Không", R.drawable.hen));
+        thuCungList.add(new ThuCung("TC07", "Thỏ", "Động Vật", "Canh Nhà", "Không", R.drawable.rabbit));
+        thuCungList.add(new ThuCung("TC08", "Khỉ", "Động Vật", "Canh Nhà", "Không", R.drawable.monkey));
+        thuCungList.add(new ThuCung("TC09", "Bird", "Động Vật", "Canh Nhà", "Không", R.drawable.bird));
+        thuCungList.add(new ThuCung("TC10", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
+        thuCungList.add(new ThuCung("TC11", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
+        thuCungList.add(new ThuCung("TC12", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
+        thuCungList.add(new ThuCung("TC13", "Chó", "Động Vật", "Canh Nhà", "Không", R.drawable.dog));
+        thuCungList.add(new ThuCung("TC14", "Mèo", "Động Vật", "Canh Nhà", "Không", R.drawable.catt));
+        thuCungList.add(new ThuCung("TC15", "Bò", "Động Vật", "Canh Nhà", "Không", R.drawable.cow));
+        thuCungList.add(new ThuCung("TC16", "Cừu", "Động Vật", "Canh Nhà", "Không", R.drawable.sheep));
     }
 
     @Override

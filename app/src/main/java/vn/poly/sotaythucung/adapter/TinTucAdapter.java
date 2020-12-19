@@ -66,6 +66,17 @@ public class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder
 
             }
         });
+        holder.imgHinhAnhTinTuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TinTucDAO tinTucDAO = new TinTucDAO(new SQLiteDB(context));
+                tinTucList = tinTucDAO.getAllNews();
+                Intent intent = new Intent(context, NewsMainActivity.class);
+                intent.putExtra("LINKBLOG", tinTucList.get(position).getUrlNews());
+                intent.putExtra("IMAGERHEADER", tinTucList.get(position).getImgHeaderNews());
+                context.startActivity(intent);
+            }
+        });
         holder.tvTitleTinTuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

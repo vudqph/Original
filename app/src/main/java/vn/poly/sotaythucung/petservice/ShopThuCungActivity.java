@@ -107,17 +107,24 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
     public void addCuaHang() {
-        CuaHang cuaHang = new CuaHang("CH01", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Ha Noi", R.drawable.bg_shoppet, 21.03384013819058, 105.81026261195504);
-        CuaHang cuaHang1 = new CuaHang("CH02", "Cửa Hàng Thú Cưng", "Bán Các loai Động Vật", "Ha Noi", R.drawable.bg_shoppet, 21.03384013819058, 105.81026261195504);
-        CuaHang cuaHang2 = new CuaHang("CH03", "Cửa Hàng Thú Cưng", "Cửa hàng chuyên bán các loại thức ăn động vật", "Ha Noi", R.drawable.bg_shoppet, 21.03384013819058, 105.81026261195504);
+        CuaHang cuaHang = new CuaHang("CH01", "Pet Mart Nguyễn Trãi", "Pet Mart  là chuỗi pet shop thú cưng tại Hà Nội, TP.HCM, Đà Nẵng và Hải Phòng với hệ thống nhiều chi nhánh cửa hàng thú cưng chuyên cung cấp đồ dùng, quần áo, thức ăn, sữa tắm, chuồng, vòng cổ xích và các phụ kiện cho chó cảnh , mèo cảnh , cá cảnh , thỏ cảnh , chuột cảnh, sóc, bò sát  cảnh hàng đầu tại Việt Nam. Địa chỉ nhận tắm spa, chăm sóc, cắt tỉa lông và trông giữ thú cưng chuyên nghiệp", "242 Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân, Hà Nội 120001, Vietnam", R.drawable.bg_shoppet, 20.997563, 105.8093944);
+        CuaHang cuaHang1 = new CuaHang("CH02", "Pet Mart Đại Cồ Việt", "Chuỗi pet shop thú cưng tại Hà Nội, TP.HCM, Đà Nẵng và Hải Phòng với hệ thống nhiều chi nhánh cửa hàng thú cưng chuyên cung cấp đồ dùng, quần áo, thức ăn, sữa tắm, chuồng, vòng cổ xích và các phụ kiện cho chó cảnh , mèo cảnh , cá cảnh , thỏ cảnh , chuột cảnh, sóc, bò sát  cảnh hàng đầu tại Việt Nam", "3 Đại Cồ Việt, Lê Đại Hành, Hai Bà Trưng, Hà Nội 112525, Vietnam", R.drawable.bg_shoppet, 20.9988824, 105.8291748);
+        CuaHang cuaHang2 = new CuaHang("CH03", "Mèo Cún Pet Shop", "Mèo Cún Pet Shop tiền thân là đại lý kinh doanh  thuốc thú y với nhiều năm kinh nghiệm tại Trường Chinh, Hà Nội", "Ki ốt 6, 88, Trường Chinh, Phương Đình, Đống Đa, Hà Nội 100000, Vietnam", R.drawable.bg_shoppet, 20.998882, 105.8291748);
+        CuaHang cuaHang3 = new CuaHang("CH04", "ILU PET SHOP", "ILU PET SHOP  đến cho khách hàng dịch vụ Chuyên nghiệp theo kỹ thuật Spa - Grooming Quốc tế trong ngành SPA THÚ CƯNG", "Số 66 Ngõ 298 Tây Sơn, Trung Liệt, Đống Đa, Hà Nội 100000, Vietnam", R.drawable.bg_shoppet, 20.9990715, 105.8203667);
+        CuaHang cuaHang4 = new CuaHang("CH05", "Pet Mart Đại Cồ Việt", "Chuỗi pet shop thú cưng tại Hà Nội, TP.HCM, Đà Nẵng và Hải Phòng với hệ thống nhiều chi nhánh cửa hàng thú cưng chuyên cung cấp đồ dùng, quần áo, thức ăn, sữa tắm, chuồng, vòng cổ xích và các phụ kiện cho chó cảnh , mèo cảnh , cá cảnh , thỏ cảnh , chuột cảnh, sóc, bò sát  cảnh hàng đầu tại Việt Nam", "3 Đại Cồ Việt, Lê Đại Hành, Hai Bà Trưng, Hà Nội 112525, Vietnam", R.drawable.bg_shoppet, 20.9988824, 105.8291748);
+        CuaHang cuaHang5 = new CuaHang("CH06", "Mèo Cún Pet Shop", "Mèo Cún Pet Shop tiền thân là đại lý kinh doanh  thuốc thú y với nhiều năm kinh nghiệm tại Trường Chinh, Hà Nội", "Ki ốt 6, 88, Trường Chinh, Phương Đình, Đống Đa, Hà Nội 100000, Vietnam", R.drawable.bg_shoppet, 20.998882, 105.8291748);
+        CuaHang cuaHang6 = new CuaHang("CH07", "ILU PET SHOP", "ILU PET SHOP  đến cho khách hàng dịch vụ Chuyên nghiệp theo kỹ thuật Spa - Grooming Quốc tế trong ngành SPA THÚ CƯNG", "Số 66 Ngõ 298 Tây Sơn, Trung Liệt, Đống Đa, Hà Nội 100000, Vietnam", R.drawable.bg_shoppet, 20.9990715, 105.8203667);
+
         CuaHangDAO cuaHangDAO = new CuaHangDAO(sqLiteDB);
         cuaHangDAO.addStore(cuaHang);
         cuaHangDAO.addStore(cuaHang1);
         cuaHangDAO.addStore(cuaHang2);
+        cuaHangDAO.addStore(cuaHang3);
+        cuaHangDAO.addStore(cuaHang4);
+        cuaHangDAO.addStore(cuaHang5);
+        cuaHangDAO.addStore(cuaHang6);
     }
-
     private void delete() {
         CuaHangDAO cuaHangDAO = new CuaHangDAO(sqLiteDB);
         cuaHangDAO.xoaCuaHang("CH01");
@@ -128,7 +135,6 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
     public boolean onCreateOptionsMenu(Menu menu) {
         try {
             getMenuInflater().inflate(R.menu.item_search, menu);
-//        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
             MenuItem searchItem = menu.findItem(R.id.action_search);
             androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -149,24 +155,5 @@ public class ShopThuCungActivity extends AppCompatActivity implements Navigation
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-//        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
-        MenuItem searchItem = menu.findItem(R.id.action_menu);
-        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                cuaHangAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }
 }

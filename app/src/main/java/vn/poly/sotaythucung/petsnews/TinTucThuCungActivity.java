@@ -71,13 +71,15 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
         progressBar = findViewById(R.id.progressBar);
         tinTucList = new ArrayList<>();
         recyclerViewTinTuc.setHasFixedSize(true);
-        recyclerViewTinTuc.setLayoutManager(new GridLayoutManager(this, 2));
         Content content = new Content();
         content.execute();
-//        delete();
+        recyclerViewTinTuc.setLayoutManager(new GridLayoutManager(this, 2));
         tinTucList = tinTucDAO.getAllNews();
         tinTucAdapter = new TinTucAdapter(tinTucList, this);
         recyclerViewTinTuc.setAdapter(tinTucAdapter);
+
+//        delete();
+
     }
 
     private void Menu() {
@@ -94,8 +96,6 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
     }
 
     public class Content extends AsyncTask<Void, Void, Void> {
-
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -107,6 +107,7 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
             tinTucAdapter.notifyDataSetChanged();
+
         }
 
         @Override
@@ -127,7 +128,7 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
                     e.printStackTrace();
                 }
                 try {
-                    Thread.sleep(4000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -140,15 +141,6 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
                         Element urll = element.getElementsByTag("a").first();
                         Element img = element.getElementsByClass("img").first();
                         Element title = element.getElementsByTag("h3").first();
-//
-//                        if (urll != null) {
-//
-//                            Log.e("CHECK", "URLBLOG: " + urlBlog);
-//                        }
-//                        if (img != null) {
-//
-//                            Log.e("CHECK", "IMAGERNEWS: " + src);
-//                        }
                         if (title != null && urll != null && img != null) {
                             String idNews = "ID0" + dem;
                             String src = title.select("a").text();
@@ -160,28 +152,10 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
                             Log.d("items", " item: " + dem);
                         }
                     }
-
                 }
-
-
             } else {
                 checkInternet.setText("Không có kết nối Internet");
             }
-//                for (int i = 1; i < data.size(); i++) {
-//                    String idNews = "new0" + i;
-//                    String urlPage = data.select("h4.gridminfotitle").select("a").eq(i).attr("href");
-//                    String img = data.select("img").eq(i).attr("src");
-//                    String title = data.select("h4.gridminfotitle").select("a").select("span").eq(i).text();
-//                    Log.d("items", "item:  " + img + " Title: " + title + "urlPage : " + urlPage);
-//                    String newImgie = img.replace("w72-h72", "w720-h720");
-//                    if (!img.isEmpty()) {
-////                            tinTucDAO.addNews(new TinTuc(title, idNews, img, urlPage));
-//                        Log.d("items", " item: " + newImgie + " Title: " + title + "urlPage: " + urlPage);
-//                    }
-//                }
-//            } else {
-//                checkInternet.setText("Không có kết nối Internet");
-//            }
             return null;
         }
     }
@@ -189,8 +163,6 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
     private void delete() {
         TinTucDAO tinTucDAO = new TinTucDAO(sqLiteDB);
         tinTucList = tinTucDAO.getAllNews();
-//        String benhVien[] = new String[]{"news01", "news00", "news02", "news03", "news04", "news05"};
-//        TinTucDAO tintucDao = new TinTucDAO(sqLiteDB);
         for (int i = 0; i < tinTucList.size(); i++) {
             tinTucDAO.deleteNews(tinTucList.get(i).getIdNews());
         }
@@ -222,23 +194,9 @@ public class TinTucThuCungActivity extends AppCompatActivity implements Navigati
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-//        getSupportActionBar().setLogo(R.drawable.ic_search_toolbar);
-        MenuItem searchItem = menu.findItem(R.id.action_menu);
-        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                tinTucAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.refresh_activity, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

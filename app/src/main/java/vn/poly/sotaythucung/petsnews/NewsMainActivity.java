@@ -35,7 +35,7 @@ public class NewsMainActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView tvHeaderNews;
     ImageView imgHeaderNews;
-    String image;
+    static String image;
     static String title;
 
     @Override
@@ -62,11 +62,11 @@ public class NewsMainActivity extends AppCompatActivity {
     public class Content extends AsyncTask<Void, Void, Document> {
         Intent intent = getIntent();
         String url = intent.getStringExtra("LINKBLOG");
-
+        String imagie = intent.getStringExtra("IMAGERHEADER");
         @Override
         protected void onPostExecute(Document document) {
             super.onPostExecute(document);
-            Picasso.get().load(image).into(imgHeaderNews);
+            Picasso.get().load(imagie).into(imgHeaderNews);
             tvHeaderNews.setText(String.valueOf(title));
             webviewNews.loadDataWithBaseURL(url, document.toString(), "text/html", "utf-8", "");
             webviewNews.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
